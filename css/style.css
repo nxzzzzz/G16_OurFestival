@@ -1,0 +1,27 @@
+body {
+  font-family: 'Prompt', sans-serif;
+  background-color: #E9F8FF;
+  color: #333;
+}
+
+.bg-water {
+  background-color: #7EC8E3;
+}
+
+.bg-sunset {
+  background-color: #005F73;
+}
+
+h1, h2 {
+  color: #005F73;
+}
+
+footer {
+  background-color: #005F73;
+}
+
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 1.5rem;
+  }
+}
