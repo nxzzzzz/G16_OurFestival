@@ -4,6 +4,51 @@ body {
   color: #333;
 }
 
+:root { --sidebar-w: 220px; }
+
+.sidebar {
+  position: fixed;
+  top: 0; left: 0; bottom: 0;
+  width: var(--sidebar-w);
+  background: #f8f9fa;
+  padding: 16px;
+  overflow-y: auto;
+  border-right: 1px solid #eee;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    position: static;   /* เลิก fixed บนจอเล็ก -> ไปอยู่บนสุด */
+    width: 100%;
+    height: auto;
+    border-right: 0;
+    border-bottom: 1px solid #eee;
+  }
+}
+
+.sidebar .nav-link {
+  color: #333;
+  transition: 0.2s;
+}
+
+.sidebar .nav-link:hover {
+  background-color: #e7f1ff;
+  border-radius: 6px;
+}
+
+.sidebar .collapse .nav-link {
+  font-size: 0.95rem;
+  padding-left: 20px;
+}
+
+.content {
+  margin-left: var(--sidebar-w);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  margin-left: 0;
+}
+
 .bg-water {
   background-color: #7EC8E3;
 }

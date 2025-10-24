@@ -13,46 +13,59 @@
     <h1>Our Songkran Festival</h1>
   </header>
 
-  <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
-    <div class="container">
-      <a class="navbar-brand" href="#">Home</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div id="navmenu" class="collapse navbar-collapse">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a href="booth-directory.html" class="nav-link">Booths</a></li>
-          <li class="nav-item"><a href="register.html" class="nav-link">Register</a></li>
-          <li class="nav-item"><a href="feedback.html" class="nav-link">Feedback</a></li>
+  <nav class="sidebar">
+  <h4 class="text-center mb-3">Our Festival</h4>
+  <ul class="nav flex-column">
+    <li class="nav-item">
+      <a href="Homepage.html" class="nav-link">🏠 Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-bs-toggle="collapse" href="#boothSubmenu" role="button" aria-expanded="false" aria-controls="boothSubmenu">
+        🎪 Booths ▾
+      </a>
+      <div class="collapse ps-3" id="boothSubmenu">
+        <ul class="nav flex-column">
+          <li class="nav-item"><a href="booth1.html" class="nav-link">Booth 1</a></li>
+          <li class="nav-item"><a href="booth2.html" class="nav-link">Booth 2</a></li>
+          <li class="nav-item"><a href="booth3.html" class="nav-link">Booth 3</a></li>
+          <li class="nav-item"><a href="booth4.html" class="nav-link">Booth 4</a></li>
         </ul>
       </div>
-    </div>
+    </li>
+    <li class="nav-item">
+      <a href="register.html" class="nav-link">📝 Register</a>
+    </li>
+    <li class="nav-item">
+      <a href="feedback.html" class="nav-link">💬 Feedback</a>
+    </li>
+  </ul>
   </nav>
-
-  <section class="container my-4">
-    <h2>เรื่องราวของงานสงกรานต์</h2>
-    <p>งาน Our Songkran Festival จัดขึ้นเพื่อเฉลิมฉลองปีใหม่ไทย
-    ร่วมสนุกกับกิจกรรมเล่นน้ำ ดนตรี และอาหารพื้นเมืองมากมาย!</p>
-    <img src="images/songkran1.jpg" class="img-fluid rounded" alt="บรรยากาศงานสงกรานต์">
-  </section>
-
-  <section class="container my-4">
-    <h2>ส่วนแสดงรายชื่อสมาชิกภายในกลุ่ม พร้อมทั้งระบุด้วยว่าทำบทบาทใดใน software development team</h2>
-    <div class="row">
-      <div class="col-md-3 text-center">
-        <img src="images/member1.jpg" class="rounded-circle img-fluid" alt="">
-        <p>สมชาย - Frontend Developer</p>
+<div class="content">
+    <section class="container my-4">
+      <h2>เรื่องราวของงานสงกรานต์</h2>
+      <p>งาน Our Songkran Festival จัดขึ้นเพื่อเฉลิมฉลองปีใหม่ไทย
+      ร่วมสนุกกับกิจกรรมเล่นน้ำ ดนตรี และอาหารพื้นเมืองมากมาย!</p>
+      <img src="images/songkran1.jpg" class="img-fluid rounded" alt="บรรยากาศงานสงกรานต์">
+    </section>
+  
+    <section class="container my-4">
+      <h2>ส่วนแสดงรายชื่อสมาชิกภายในกลุ่ม พร้อมทั้งระบุด้วยว่าทำบทบาทใดใน software development team</h2>
+      <div class="row">
+        <div class="col-md-3 text-center">
+          <img src="images/member1.jpg" class="rounded-circle img-fluid" alt="">
+          <p>สมชาย - Frontend Developer</p>
+        </div>
+        <div class="col-md-3 text-center">
+          <img src="images/member2.jpg" class="rounded-circle img-fluid" alt="">
+          <p>สมศรี - Backend Developer</p>
+        </div>
       </div>
-      <div class="col-md-3 text-center">
-        <img src="images/member2.jpg" class="rounded-circle img-fluid" alt="">
-        <p>สมศรี - Backend Developer</p>
-      </div>
-    </div>
-  </section>
-
-  <footer class="text-center bg-sunset text-white py-3">
-    <p>© 2025 Our Songkran Festival | Contact: info@songkranfest.com</p>
-  </footer>
+    </section>
+  
+    <footer class="text-center bg-sunset text-white py-3">
+      <p>© 2025 Our Songkran Festival | Contact: info@songkranfest.com</p>
+    </footer>
+</div>
 
   <script src="js/script.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
