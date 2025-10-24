@@ -14,7 +14,7 @@
 
   <h2>ลงทะเบียนร่วมงาน</h2>
   <main class="container my-4">
-    <form id="registerForm" class="p-3 border rounded bg-white" action="" method="GET">
+    <form id="registerForm" class="p-3 border rounded bg-white" action="./Homepage.html" method="GET">
       <div class="mb-3">
         <label for="name" class="form-label">ชื่อ</label>
         <input type="text" id="first-name" name="first-name" class="form-control" required>
@@ -27,18 +27,18 @@
 
       <div class="mb-3">
         <label class="form-label">เพศ</label><br>
-        <input type="radio" name="gender" value="ชาย"> ชาย
-        <input type="radio" name="gender" value="หญิง" class="ms-3"> หญิง
+        <input type="radio" name="gender" value="ชาย" required> ชาย
+        <input type="radio" name="gender" value="หญิง" class="ms-3" required> หญิง
       </div>
 
       <div class="mb-3">
         <label for="name" class="form-label">อายุ</label>
-        <input type="number" id="age" name="age" max="100" class="form-control" required>
+        <input type="text" id="age" name="age" pattern="[1-9]{1,3}" class="form-control" required>
       </div> 
 
       <div class="mb-3">
         <label for="name" class="form-label">เบอร์โทรศัพท์</label>
-        <input type="number" id="number" name="telephone" class="form-control" required>
+        <input type="text" id="number" name="telephone" pattern="[0-9]{10}" class="form-control" required>
       </div> 
 
       <div class="mb-3">
@@ -46,7 +46,7 @@
         <input type="email" id="email" name="email" class="form-control" required>
       </div> 
 
-      <button type="submit" class="btn btn-primary">เข้าร่วมงาน</button>
+      <button type="submit" value="register" class="btn btn-primary">เข้าร่วมงาน</button>
     </form>
 
     <div id="registerResult" class="mt-4"></div>
