@@ -4,26 +4,36 @@ body {
   color: #333;
 }
 
-:root { --sidebar-w: 220px; }
-
-.sidebar {
-  position: fixed;
-  top: 0; left: 0; bottom: 0;
-  width: var(--sidebar-w);
-  background: #f8f9fa;
-  padding: 16px;
-  overflow-y: auto;
-  border-right: 1px solid #eee;
+header {
+  position: relative;
+  z-index: 1100;
 }
 
-@media (max-width: 768px) {
-  .sidebar {
-    position: static;   /* เลิก fixed บนจอเล็ก -> ไปอยู่บนสุด */
-    width: 100%;
-    height: auto;
-    border-right: 0;
-    border-bottom: 1px solid #eee;
-  }
+:root{
+  --sidebar-w: 220px;
+  --header-h: 72px;
+}
+
+.sidebar{
+  position: fixed;
+  left: 0;
+  top: var(--header-h);
+  height: calc(100% - var(--header-h));
+  width: var(--sidebar-w);
+  box-sizing: border-box;
+  background: #fff;
+  box-shadow: 2px 0 10px rgba(0,0,0,.08);
+  padding: 20px;
+  overflow-y: auto;
+  transition: transform .3s ease;
+  z-index: 1000;
+}
+.sidebar.hidden { 
+  transform: translateX(-100%); 
+}
+
+.sidebar.hidden ~ .content {
+  margin-left: 0;
 }
 
 .sidebar .nav-link {
@@ -46,7 +56,7 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  margin-left: 0;
+  transition: margin-left 0.3s ease;
 }
 
 .bg-water {
@@ -68,5 +78,8 @@ footer {
 @media (max-width: 768px) {
   header h1 {
     font-size: 1.5rem;
+  }
+  .sidebar.hidden ~ .content { 
+    margin-left: 0; 
   }
 }
