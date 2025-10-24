@@ -68,6 +68,7 @@ header {
 }
 
 h1, h2 {
+  text-align: center;
   color: #005F73;
 }
 
