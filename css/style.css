@@ -63,7 +63,11 @@ header {
 
 
 .content {
+  margin-left: var(--sidebar-w);
+  min-height: 100vh;
   display: flex;
+  flex-direction: column;
+  min-height: 100vh;
   flex-direction: row; 
   align-items: flex-start;
   gap: 20px;
