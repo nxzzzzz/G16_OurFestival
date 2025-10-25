@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'English creepy';
-  src: url('../fonts/DeathBones.ttf') format('truetype');
+  src: url('../fonts/Spookyman.otf') format('truetype');
   font-display: swap;
 }
 @font-face {
@@ -13,7 +13,7 @@ body {
   font-family: 'Thai creepy', sans-serif;
   background-color: #E9F8FF;
   color: #333;
-  min-height: 100vh;
+  min-height: 00vh;
   margin: 0;
   display: flex;
   flex-direction: column;
@@ -201,7 +201,6 @@ header {
 header h1 {
   font-size: 2rem;
   letter-spacing: 1px;
-  text-shadow: 0 0 10px rgba(255, 180, 80, 0.9);
 }
 header a {
   color: #fff;
