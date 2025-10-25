@@ -13,7 +13,7 @@
   </header>
 
   <main class="container my-4">
-    <form id="registerForm" class="p-3 border rounded bg-white" action="./Homepage.html" method="GET">
+    <form id="registerForm" class="p-3 border rounded bg-white" action="./Homepage.html" method="POST">
       <div class="mb-3">
         <label for="name" class="form-label">ชื่อ</label>
         <input type="text" id="first-name" name="first-name" class="form-control" pattern="[A-Za-zก-๙]{1,}" placeholder="เช่น สมชาย" required>
@@ -26,9 +26,17 @@
 
       <div class="mb-3">
         <label class="form-label">เพศ</label><br>
-        <input type="radio" name="gender" value="ชาย" required> ชาย
-        <input type="radio" name="gender" value="หญิง" class="ms-3" required> หญิง
+        <input type="radio" name="gender" value="ชาย" required> <span class="form-label">ชาย</span>
+        <input type="radio" name="gender" value="หญิง" class="ms-3" required> <span class="form-label">หญิง</span>
       </div>
+
+      <label class="form-label">สถานะ</label><br>
+      <select class="form-control mb-3" name="status" id="status" required>
+        <option value="" hidden>Select status</option>
+        <option value="professor">อาจารย์</option>
+        <option value="student">นักศึกษา</option>
+        <option value="outsider">บุคคลภายนอก</option>
+      </select>
 
       <div class="mb-3">
         <label for="name" class="form-label">อายุ</label>
