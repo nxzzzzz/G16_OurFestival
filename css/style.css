@@ -1,5 +1,16 @@
+@font-face {
+  font-family: 'English creepy';
+  src: url('../fonts/DeathBones.ttf') format('truetype');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Thai creepy';
+  src: url('../fonts/MNLonItalic.ttf') format('truetype');
+  font-display: swap;
+}
+
 body {
-  font-family: 'Prompt', sans-serif;
+  font-family: 'Thai creepy', sans-serif;
   background-color: #E9F8FF;
   color: #333;
   min-height: 100vh;
@@ -98,17 +109,28 @@ header {
   background-color: #005F73;
 }
 
-h1, h2 {
+h1 {
   text-align: center;
   color: #005F73;
   color: rgb(252, 252, 252);
   text-align: center;
   padding: 1rem;
+  font-family: 'English creepy', sans-serif;
+}
+h2 {
+  text-align: center;
+  color: #005F73;
+  color: rgb(252, 252, 252);
+  text-align: center;
+  padding: 1rem;
+  font-family: 'Thai creepy', sans-serif;
+  
 }
 h3 {
   color: #005F73;
   text-align: center;
   margin-bottom: 1rem;
+  font-family: 'Thai creepy', sans-serif;
 }
 
 
