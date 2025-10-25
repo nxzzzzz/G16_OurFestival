@@ -19,7 +19,7 @@
   <ul class="nav flex-column">
     <li class="nav-item nav-split">
   <div class="d-flex align-items-center">
-    <a class="nav-link flex-grow-1 pe-2" href="booth-directory.html"><i class="bi bi-shop-window"></i> Booths</a>
+    <a class="nav-link flex-grow-1 pe-2" href="booth-directory.html"> Booths</a>
 
     <button class="btn btn-sm btn-outline-secondary caret-toggle"
             type="button"
@@ -44,25 +44,25 @@
   </ul>
   </nav>
 
-  <h2>แบบประเมินความพึงพอใจ</h2>
+  <h2>Feedback</h2>
   <main class="container my-4">
     <form id="feedbackForm" class="p-3 border rounded bg-white">
       <div class="mb-3">
-        <label for="visitor" class="form-label">ชื่อผู้ประเมิน</label>
+        <label for="visitor" class="form-label">Name</label>
         <input type="text" id="visitor" class="form-control" required>
       </div>
 
       <div class="mb-3">
-        <label for="rating" class="form-label">ให้คะแนนความพึงพอใจ (1–5)</label>
+        <label for="rating" class="form-label">Rate (1–5)</label>
         <input type="range" id="rating" class="form-range" min="1" max="5">
       </div>
 
       <div class="mb-3">
-        <label for="comment" class="form-label">ข้อเสนอแนะ</label>
+        <label for="comment" class="form-label">Message</label>
         <textarea id="comment" class="form-control" rows="3"></textarea>
       </div>
 
-      <button type="submit" class="btn btn-primary">ส่งแบบประเมิน</button>
+      <button type="submit" class="btn btn-primary">Share my feedback</button>
     </form>
 
     <div id="feedbackResult" class="mt-4"></div>

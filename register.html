@@ -15,37 +15,37 @@
   <main class="container my-4">
     <form id="registerForm" class="p-3 border rounded bg-white" action="./Homepage.html" method="POST">
       <div class="mb-3">
-        <label for="name" class="form-label">ชื่อ</label>
-        <input type="text" id="first-name" name="first-name" class="form-control" pattern="[A-Za-zก-๙]{1,}" placeholder="เช่น สมชาย" required>
+        <label for="name" class="form-label">First name</label>
+        <input type="text" id="first-name" name="first-name" class="form-control" pattern="[A-Za-zก-๙]{1,}" placeholder="e.g. Somchai" required>
       </div>
 
       <div class="mb-3">
-        <label for="name" class="form-label">นามสกุล</label>
-        <input type="text" id="last-name" name="last-name" class="form-control" pattern="[A-Za-zก-๙]{1,}" placeholder="เช่น หมายปอง" required>
+        <label for="name" class="form-label">Last name</label>
+        <input type="text" id="last-name" name="last-name" class="form-control" pattern="[A-Za-zก-๙]{1,}" placeholder="e.g. Mhaipong" required>
       </div> 
 
       <div class="mb-3">
-        <label class="form-label">เพศ</label><br>
-        <input type="radio" name="gender" value="ชาย" required> <span class="form-label">ชาย</span>
-        <input type="radio" name="gender" value="หญิง" class="ms-3" required> <span class="form-label">หญิง</span>
+        <label class="form-label">Gender</label><br>
+        <input type="radio" name="gender" value="ชาย" required> <span class="form-label">Male</span>
+        <input type="radio" name="gender" value="หญิง" class="ms-3" required> <span class="form-label">Female</span>
       </div>
 
-      <label class="form-label">สถานะ</label><br>
+      <label class="form-label">Status</label><br>
       <select class="form-control mb-3" name="status" id="status" required>
         <option value="" hidden>Select status</option>
-        <option value="professor">อาจารย์</option>
-        <option value="student">นักศึกษา</option>
-        <option value="outsider">บุคคลภายนอก</option>
+        <option value="professor">Professor</option>
+        <option value="student">Student</option>
+        <option value="outsider">Guest</option>
       </select>
 
       <div class="mb-3">
-        <label for="name" class="form-label">อายุ</label>
-        <input type="text" id="age" name="age" pattern="[0-9]{1,3}" class="form-control" placeholder="กรอกเฉพาะตัวเลข" required>
+        <label for="name" class="form-label">Age</label>
+        <input type="text" id="age" name="age" pattern="[0-9]{1,3}" class="form-control" placeholder="Numbers only" required>
       </div>
 
       <div class="mb-3">
-        <label for="name" class="form-label">เบอร์โทรศัพท์</label>
-        <input type="text" id="telephone" name="telephone" pattern="\d{10}" class="form-control" placeholder="เช่น 0989879876" required>
+        <label for="name" class="form-label">Phone number</label>
+        <input type="text" id="telephone" name="telephone" pattern="\d{10}" class="form-control" placeholder="e.g. 0989879876" required>
       </div> 
 
       <div class="mb-3">
@@ -53,7 +53,7 @@
         <input type="email" id="email" name="email" class="form-control" pattern="[A-Za-z]{1,}+@" placeholder="example@gmail.com" required>
       </div> 
 
-      <button type="submit" value="register" class="btn btn-primary">เข้าร่วมงาน 👻</button>
+      <button type="submit" value="register" class="btn btn-primary">Join</button>
     </form>
 
     <div id="registerResult" class="mt-4"></div>
