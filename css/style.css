@@ -55,6 +55,13 @@ header {
   padding-left: 20px;
 }
 
+.sidebar .caret-toggle {
+  border: none ;
+  background: transparent ;
+  box-shadow: none ;
+}
+
+
 .content {
   display: flex;
   flex-direction: row; 
