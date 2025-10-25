@@ -183,28 +183,31 @@ h5 {
 
 /* Tablet Layout (768x1024) */
 @media (max-width: 1024px) and (min-width: 769px) {
-  .content {
-    display: flex;
+  /* Sidebar เดิมเป็น fixed ซ้าย → เปลี่ยนเป็นบล็อกธรรมดา */
+  .sidebar{
+    position: static;
+    width: 100%;
+    height: auto;
+    max-height: none;
+    transform: none;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    margin-bottom: 12px;
+  }
+
+  /* เนื้อหาเรียงเป็นคอลัมน์ (บน→ล่าง): main → secondary */
+  .content{
+    margin-left: 0;
     flex-direction: column;
-    flex: 1;
     padding: 15px;
   }
 
-  .main-content {
-    order: 1;
-    margin-bottom: 20px;
-  }
-
-  .secondary-content {
+  .secondary-content{
     width: 100%;
-    max-height: 300px;
-    background-color: #c8ecf8;
-    order: 2;
     position: static;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    max-height: none;
   }
 }
+
 
 /* Phone Layout (360x640) */
 @media (max-width: 640px) {
@@ -234,46 +237,36 @@ h5 {
   }
 }
 
+
 /* Mobile sidebar for 360x640 screens */
-@media (max-width: 360px) and (max-height: 640px) {
-  .sidebar {
+@media (max-width: 640px){
+  /* ค่าเริ่มต้น: ซ่อน sidebar ไว้ด้านบนจอ */
+  .sidebar{
     position: fixed;
     left: 0;
     top: var(--header-h);
     width: 100%;
     height: auto;
     max-height: calc(100vh - var(--header-h));
-    transform: translateY(-100%);
-    transition: transform 0.3s ease;
+    transform: translateY(-100%);         /* ซ่อน */
+    transition: transform .3s ease;
     z-index: 1000;
-    background: #fff;
     box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-    padding: 15px;
-    overflow-y: auto;
   }
-  
-  .sidebar.show {
-    transform: translateY(0);
-  }
-  
-  .sidebar.hidden {
-    transform: translateY(-100%);
-  }
-  
-  .content {
+  .sidebar.show{ transform: translateY(0); } /* แสดงเมื่อกด ☰ */
+
+  .content{
     margin-left: 0;
-    padding-top: 0;
+    flex-direction: column;
+    padding: 10px;
   }
-  
-  .secondary-content {
+
+  .secondary-content{
     width: 100%;
-    margin-top: 1rem;
-    background-color: #c8ecf8;
-    order: 2;
     position: static;
     max-height: none;
   }
-} 
+}
 
 footer {
   display: flex;
@@ -394,4 +387,41 @@ footer p {
 }
 .bg-sunset {
   background: linear-gradient(90deg, #ff9100, #ff6f00);
+}
+
+#toggleSidebar {
+  z-index: 1200;               /* ให้อยู่เหนือ header */
+  color: #311b92;              /* สีม่วงเข้มให้ตัดกับพื้น */
+  background-color: #fff;      /* ปุ่มสีขาวกลม */
+  border: none;
+  font-size: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 0 6px rgba(0,0,0,0.3);
+  padding: 4px 10px;
+}
+
+/* ปรับเฉพาะมือถือให้ขีดอยู่ในกรอบ header */
+@media (max-width: 640px) {
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 1100;
+    height: var(--header-h);
+  }
+  #toggleSidebar {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #ffffffdd;  /* สีขาวโปร่ง */
+    color: #311b92;
+  }
+}
+
+@media (max-width: 640px){
+  :root{ --sidebar-h: 0px; }           /* ค่าพื้นฐาน */
+  .sidebar.show + .content{
+    margin-top: var(--sidebar-h);      /* ดันเนื้อหาลงเท่าความสูงเมนู */
+  }
+  .content{ transition: margin-top .3s ease; }
 }
