@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  console.log("Songkran Festival site loaded!");
+  console.log("Haloween Festival site loaded!");
 });
 
 document.addEventListener("DOMContentLoaded", () => {
