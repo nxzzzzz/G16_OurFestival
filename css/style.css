@@ -124,6 +124,9 @@ h2 {
   text-align: center;
   padding: 1rem;
   font-family: 'Thai creepy', sans-serif;
+  margin: 30px 0;
+  font-size: 1.8rem;
+  text-shadow: 0 0 12px rgba(255, 153, 0, 0.8);
   
 }
 h3 {
@@ -133,6 +136,13 @@ h3 {
   font-family: 'Thai creepy', sans-serif;
 }
 
+p {
+  font-family: 'Thai creepy', sans-serif;
+}
+
+h5 {
+  font-family: 'Thai creepy', sans-serif;
+}
 
 @media (max-width: 1024px) {
    .content {
@@ -209,14 +219,6 @@ header a {
 }
 header a:hover {
   color: #2a0047;
-}
-
-h2 {
-  text-align: center;
-  margin: 30px 0;
-  font-size: 1.8rem;
-  color: #ffb347;
-  text-shadow: 0 0 12px rgba(255, 153, 0, 0.8);
 }
 
 form {
