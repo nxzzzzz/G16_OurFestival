@@ -45,28 +45,26 @@
   </nav>
 
   <h2>Feedback</h2>
-  <main class="container my-4">
-    <form id="feedbackForm" class="p-3 border rounded bg-white">
-      <div class="mb-3">
-        <label for="visitor" class="form-label">Name</label>
-        <input type="text" id="visitor" class="form-control" required>
-      </div>
-
-      <div class="mb-3">
-        <label for="rating" class="form-label">Rate (1–5)</label>
-        <input type="range" id="rating" class="form-range" min="1" max="5">
-      </div>
-
-      <div class="mb-3">
-        <label for="comment" class="form-label">Message</label>
-        <textarea id="comment" class="form-control" rows="3"></textarea>
-      </div>
-
-      <button type="submit" class="btn btn-primary">Share my feedback</button>
-    </form>
-
-    <div id="feedbackResult" class="mt-4"></div>
-  </main>
+  <div class="content">
+    <main class="container my-4">
+      <form id="feedbackForm" class="p-3 border rounded bg-white">
+        <div class="mb-3">
+          <label for="visitor" class="form-label">Name</label>
+          <input type="text" id="visitor" class="form-control" required>
+        </div>
+        <div class="mb-3">
+          <label for="rating" class="form-label">Rate (1–5)</label>
+          <input type="range" id="rating" class="form-range" min="1" max="5">
+        </div>
+        <div class="mb-3">
+          <label for="comment" class="form-label">Message</label>
+          <textarea id="comment" class="form-control" rows="3"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Share my feedback</button>
+      </form>
+      <div id="feedbackResult" class="mt-4"></div>
+    </main>
+  </div>
 
   <footer class="text-center bg-sunset text-white py-3">
     <p>© 2025 Our Songkran Festival</p>
