@@ -14,12 +14,6 @@
   font-display: swap;
 }
 
-.Ice-cream-pic {
-  border-radius: 12px;      
-  max-width: 100%;           
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
-}
-
 body {
   font-family: 'Thai creepy', sans-serif;
   background-color: #E9F8FF;
