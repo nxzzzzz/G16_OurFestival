@@ -292,35 +292,45 @@ footer p {
     width: var(--sidebar-w);
     max-height: calc(100vh - var(--header-h));
     transform: translateX(-100%);
-    transition: transform 0.3s ease;
+    transition: transform .3s ease;
     z-index: 1000;
     overflow-y: auto;
-    background: transparent; /* โปร่งใสตามที่ขอ */
-    box-shadow: none;
-    backdrop-filter: none;
+    background: transparent;
   }
-  .sidebar.show {
-    transform: translateX(0); /* เลื่อนเข้าจากด้านซ้าย */
-  }
+  .sidebar.show { transform: translateX(0); }
 
-  /* Content: ไม่เว้นขวา และดันลงเมื่อ sidebar เปิด */
+  /* content ชิดซ้าย + กินเต็มความกว้าง */
   .content {
-    margin: 0;
-    padding: 0 16px;
+    margin: 0;            /* ไม่มี margin ซ้าย/ขวา */
+    padding: 0 12px;      /* เผื่อขอบนิดเดียวพอ */
     width: 100%;
     box-sizing: border-box;
   }
+
+  /* ตอนเปิด sidebar: ดันลง + ยกเลิก margin-left จาก desktop */
   body.sidebar-open .content {
-    margin-top: var(--sidebar-height, 0px);  /* ดันลงตามความสูงจริงของ sidebar */
-    transition: margin-top 0.3s ease;
+    margin-top: var(--sidebar-height, 0px);
+    margin-left: 0 !important;   /* กันโดนกฎเดสก์ท็อปผลักไปขวา */
+    transition: margin-top .3s ease;
   }
 
-  /* Bootstrap container ข้างในให้เต็มจอ */
-  .content .container { max-width: 100%; margin: 0; padding: 0; }
+  /* ยกเลิกการ “กึ่งกลาง” ของ Bootstrap container ให้ชิดซ้าย */
+  .content .container {
+    max-width: 100%;
+    margin-left: 0;  /* ไม่กึ่งกลาง */
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
 
-  /* รูปภาพให้พอดีจอ ไม่ล้นขวา */
-  .content img { width: 100%; height: auto; display: block; margin: 16px auto; }
-
+  /* รูปไม่กึ่งกลาง ให้ชิดซ้ายด้วย */
+  .content img {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 16px 0 0 0;  /* เอา auto ออก จะไม่กึ่งกลางแล้ว */
+    border-radius: 10px;
+  }
   .secondary-content {
     position: static;
     width: 100%;
