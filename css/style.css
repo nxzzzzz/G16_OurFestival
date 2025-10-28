@@ -18,26 +18,17 @@
   src: url('../fonts/Hello Bones.ttf') format('truetype');
   font-display: swap;
 }
-<<<<<<< HEAD
 body {
   font-family: 'Thai creepy', sans-serif;
-  background: url("../image/halloween_background.jpeg") no-repeat center center fixed;
+  background: url("../image/halloween_background.jpeg") no-repeat center center fixed !important;
   background-size: cover;
   min-height: 100vh;
-=======
-
-* {
->>>>>>> 9718273ffe9389b02f02806a147141f296a87e81
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-<<<<<<< HEAD
-:root{
-=======
 :root {
->>>>>>> 9718273ffe9389b02f02806a147141f296a87e81
   --sidebar-w: 220px;
   --header-h: 72px;
   --secondary-w: 220px;
@@ -83,14 +74,9 @@ header a {
   top: var(--header-h);
   height: calc(100% - var(--header-h));
   width: var(--sidebar-w);
-<<<<<<< HEAD
   box-sizing: border-box;
   background: #000000;
   box-shadow: 2px 0 10px rgba(0,0,0,.08);
-=======
-  background: #fff;
-  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.08);
->>>>>>> 9718273ffe9389b02f02806a147141f296a87e81
   padding: 20px;
   overflow-y: auto;
   transition: transform 0.3s ease;
@@ -129,13 +115,10 @@ header a {
   display: flex;
   flex-direction: column;
   gap: 20px;
-<<<<<<< HEAD
   flex: 1;
   padding: 20px;
   margin-right: var(--secondary-w);
   color: #d46a2c;
-=======
->>>>>>> 9718273ffe9389b02f02806a147141f296a87e81
 }
 
 .main-content {
@@ -143,7 +126,6 @@ header a {
   padding: 20px;
 }
 
-<<<<<<< HEAD
 .secondary-content {  
   position: fixed;    
   right: 0;          
@@ -157,20 +139,6 @@ header a {
   overflow-y: auto;   
   border-radius: 8px;  
   color: #d97b2e;
-=======
-.secondary-content {
-  position: fixed;
-  right: 0;
-  top: var(--header-h);
-  width: var(--secondary-w);
-  height: 100vh;
-  background-color: rgba(67, 167, 174, 0.8);
-  padding: 20px;
-  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
-  border-radius: 8px;
-  overflow-y: auto;
-  z-index: 1000;
->>>>>>> 9718273ffe9389b02f02806a147141f296a87e81
 }
 
 .bg-water {
@@ -178,7 +146,6 @@ header a {
 }
 
 .bg-sunset {
-<<<<<<< HEAD
   background-color: #092429;
 }
 
@@ -190,11 +157,6 @@ h1 {
   padding: 1rem;
   font-family: 'English creepy', sans-serif;
 }
-=======
-  background: linear-gradient(90deg, #ff9100, #ff6f00);
-}
-
->>>>>>> 9718273ffe9389b02f02806a147141f296a87e81
 h2 {
   font-family: 'spicy', sans-serif;
   text-align: center;
@@ -212,7 +174,6 @@ p {
   font-family: 'passage creepy', 'Thai creepy';
 }
 
-<<<<<<< HEAD
 h5 {
   font-family: 'Thai creepy', sans-serif;
 }
@@ -357,8 +318,6 @@ header a:hover {
   color: #2a0047;
 }
 
-=======
->>>>>>> 9718273ffe9389b02f02806a147141f296a87e81
 form {
   background: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.15);
