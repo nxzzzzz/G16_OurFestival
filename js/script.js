@@ -5,47 +5,30 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener("DOMContentLoaded", () => {
   const toggleBtn = document.getElementById("toggleSidebar");
   const sidebar  = document.querySelector(".sidebar");
-  const header   = document.querySelector("header");
+  const bodyEl   = document.body;
 
-  // อัปเดตตัวแปรความสูง header (มีใช้ใน CSS เดิม)
-  if (header){
-    const setHeaderH = () => document.documentElement
-      .style.setProperty('--header-h', header.offsetHeight + 'px');
-    setHeaderH();
-    window.addEventListener('resize', setHeaderH);
-  }
-
-  // เริ่มต้น: จอเล็กให้ซ่อน, จอใหญ่ให้แสดง
-  if (sidebar){
-    if (window.innerWidth <= 640){
-      sidebar.classList.remove('hidden'); // โหมดมือถือใช้ .show แทน
-    }else if (window.innerWidth < 992){
-      sidebar.classList.add('hidden');    // แท็บเล็ตเล็กเริ่มซ่อนก็ได้
-    }else{
-      sidebar.classList.remove('hidden');
-    }
-  }
-
-  const updateSidebarSpace = () => {
-    if (window.innerWidth <= 640 && sidebar){
-      const h = sidebar.classList.contains('show') ? sidebar.scrollHeight : 0;
-      document.documentElement.style.setProperty('--sidebar-h', h + 'px');
-    } else {
-      document.documentElement.style.setProperty('--sidebar-h', '0px');
-    }
+  // ฟังก์ชันเช็คสถานะแล้วตั้งค่า push ให้ content
+  const syncPush = () => {
+    const isMobile = window.innerWidth <= 640;
+    // desktop: เปิดเมื่อ !hidden, mobile: เปิดเมื่อ .show
+    const isOpen = isMobile
+      ? sidebar.classList.contains("show")
+      : !sidebar.classList.contains("hidden");
+    bodyEl.classList.toggle("sidebar-open", isOpen); // <-- ตัวนี้ทำให้ content ถูกดัน
   };
-  
+
   // ปุ่ม ☰
-  if (toggleBtn && sidebar){
-    toggleBtn.addEventListener("click", () => {
-      if (window.innerWidth <= 640){
-        sidebar.classList.toggle("show");     // มือถือ: สไลด์ลง/ขึ้น
-      }else{
-        sidebar.classList.toggle("hidden");   // จอใหญ่: เลื่อนออกซ้าย/เข้า
-      }
-    });
-  }
+  toggleBtn?.addEventListener("click", () => {
+    const isMobile = window.innerWidth <= 640;
+    if (isMobile) {
+      sidebar.classList.toggle("show");     // มือถือ slide ลง/ขึ้น
+    } else {
+      sidebar.classList.toggle("hidden");   // เดสก์ท็อป slide ออก/เข้า
+    }
+    syncPush(); // อัปเดตการดัน content ทุกครั้งที่กด
+  });
 
-  window.addEventListener('resize', updateSidebarSpace);
-
+  // ให้ sync ครั้งแรก + เวลารีไซซ์
+  syncPush();
+  window.addEventListener("resize", syncPush);
 });
