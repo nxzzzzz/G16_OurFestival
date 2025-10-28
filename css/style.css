@@ -285,18 +285,22 @@ footer p {
 ======================= */
 @media (max-width: 1024px) and (min-width: 768px) {
   .content {
-    margin-left: var(--sidebar-w);
-    margin-right: 0;
-    padding: 0;
-    width: 100%;
+    flex: 1;
+    margin-left: 0;
+    margin-right: var(--secondary-w);
+    padding: 20px;
+    color: #d46a2c;
+    display: flex;
     flex-direction: column;
+    gap: 20px;
+    transition: margin-left 0.3s ease;
   }
   .content img {
     width: 100%;
     height: auto;
     display: block;
     margin: 0 auto;
-    border-radius: 10px;        /* ลบโค้งถ้าอยากให้เต็มจริงๆ */
+    border-radius: 10px;
   }
 
   .sidebar {
