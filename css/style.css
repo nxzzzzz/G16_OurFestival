@@ -20,17 +20,12 @@
 }
 body {
   font-family: 'Thai creepy', sans-serif;
-  background-color: #E9F8FF;
-  color: #333;
-  min-height: 00vh;
+  background: url("../image/halloween_background.jpeg") no-repeat center center fixed;
+  background-size: cover;
+  min-height: 100vh;
   margin: 0;
   display: flex;
   flex-direction: column;
-}
-
-header {
-  position: relative;
-  z-index: 1100;
 }
 
 :root{
@@ -46,7 +41,7 @@ header {
   height: calc(100% - var(--header-h));
   width: var(--sidebar-w);
   box-sizing: border-box;
-  background: #fff;
+  background: #000000;
   box-shadow: 2px 0 10px rgba(0,0,0,.08);
   padding: 20px;
   overflow-y: auto;
@@ -62,12 +57,12 @@ header {
 }
 
 .sidebar .nav-link {
-  color: #333;
+  color: #893708;
   transition: 0.2s;
 }
 
 .sidebar .nav-link:hover {
-  background-color: #e7f1ff;
+  background-color: #020405;
   border-radius: 6px;
 }
 
@@ -93,6 +88,7 @@ header {
   flex: 1;
   padding: 20px;
   margin-right: var(--secondary-w);
+  color: #d46a2c;
 }
 
 .main-content {
@@ -108,12 +104,13 @@ header {
   top: var(--header-h);                
   width: 220px;         
   height: 100vh;         
-  background-color: rgba(67, 167, 174, 0.8); 
+  background-color: rgba(68, 11, 7, 0.8); 
   padding: 20px;         
   box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2); 
-  z-index: 1000;   
+  z-index: 500;   
   overflow-y: auto;   
   border-radius: 8px;  
+  color: #d97b2e;
 }
 
 
@@ -123,12 +120,12 @@ header {
 }
 
 .bg-sunset {
-  background-color: #005F73;
+  background-color: #092429;
 }
 
 h1 {
   text-align: center;
-  color: #005F73;
+  color: #228498;
   color: rgb(252, 252, 252);
   text-align: center;
   padding: 1rem;
@@ -168,7 +165,7 @@ h5 {
   height: calc(100% - var(--header-h));
   width: var(--sidebar-w);
   box-sizing: border-box;
-  background: #fff;
+  background: #000000;
   box-shadow: 2px 0 10px rgba(0,0,0,.08);
   padding: 20px;
   overflow-y: auto;
@@ -255,6 +252,7 @@ footer {
   flex-direction: column;
   order: 3;
   margin-top: 0;
+  z-index: 900;
 }
 
 @media (max-width: 1024px) {
@@ -274,19 +272,16 @@ footer {
   box-sizing: border-box;
 }
 
-body {
-  background: radial-gradient(circle at top, #E9967A , #4B0082 70%);
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
 header {
-  background: linear-gradient(90deg, #ff6f00, #ff9100);
+  background: #2e0e04 !important;
+  color: #080202;
   box-shadow: 0 4px 10px rgba(0,0,0,0.3);
   position: sticky;
   top: 0;
   z-index: 100;
+}
+header a, header h1 {
+  color: #bd5814;
 }
 header h1 {
   font-size: 2.5rem;
@@ -294,7 +289,7 @@ header h1 {
   margin-top: -10px;
 }
 header a {
-  color: #fff;
+  color: #f2ecec;
   text-decoration: none;
   transition: 0.3s;
 }
