@@ -286,8 +286,9 @@ footer p {
 @media (max-width: 1024px) and (min-width: 768px) {
   .content {
     flex: 1;
-    margin-left: 0;
-    margin-right: 0;
+    margin: 0;
+    width: 100vw;
+    box-sizing: border-box;
     padding: 0;
     color: #d46a2c;
     display: flex;
@@ -295,6 +296,13 @@ footer p {
     gap: 20px;
     transition: margin-left 0.3s ease;
   }
+
+  .content .container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0 auto;
+  }
+
   .content img {
     width: 100%;
     height: auto;
