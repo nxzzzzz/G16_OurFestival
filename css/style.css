@@ -45,6 +45,7 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  overflow-x: hidden;
 }
 
 /* =======================
@@ -284,38 +285,41 @@ footer p {
    RESPONSIVE DESIGN
 ======================= */
 @media (max-width: 1024px) and (min-width: 768px) {
-  .content {
-    flex: 1;
-    margin: 0;
-    width: 100vw;
-    box-sizing: border-box;
-    padding: 0;
-    color: #d46a2c;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    transition: margin-left 0.3s ease;
-  }
-
-  .content .container {
-    max-width: 100%;
-    padding: 0;
-    margin: 0 auto;
-  }
-
-  .content img {
-    width: 100%;
-    height: auto;
-    display: block;
-    margin: 0 auto;
-    border-radius: 10px;
-  }
-
   .sidebar {
-    width: var(--sidebar-w);
-    background: transparent;
     position: fixed;
+    top: var(--header-h);
+    left: 0;
+    width: var(--sidebar-w);
+    max-height: calc(100vh - var(--header-h));
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    z-index: 1000;
+    overflow-y: auto;
+    background: transparent; /* โปร่งใสตามที่ขอ */
+    box-shadow: none;
+    backdrop-filter: none;
   }
+  .sidebar.show {
+    transform: translateX(0); /* เลื่อนเข้าจากด้านซ้าย */
+  }
+
+  /* Content: ไม่เว้นขวา และดันลงเมื่อ sidebar เปิด */
+  .content {
+    margin: 0;
+    padding: 0 16px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  body.sidebar-open .content {
+    margin-top: var(--sidebar-height, 0px);  /* ดันลงตามความสูงจริงของ sidebar */
+    transition: margin-top 0.3s ease;
+  }
+
+  /* Bootstrap container ข้างในให้เต็มจอ */
+  .content .container { max-width: 100%; margin: 0; padding: 0; }
+
+  /* รูปภาพให้พอดีจอ ไม่ล้นขวา */
+  .content img { width: 100%; height: auto; display: block; margin: 16px auto; }
 
   .secondary-content {
     position: static;
@@ -360,3 +364,4 @@ footer p {
     margin-top: 12px;
   }
 }
+

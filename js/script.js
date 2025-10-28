@@ -7,28 +7,34 @@ document.addEventListener("DOMContentLoaded", () => {
   const sidebar  = document.querySelector(".sidebar");
   const bodyEl   = document.body;
 
-  // ฟังก์ชันเช็คสถานะแล้วตั้งค่า push ให้ content
-  const syncPush = () => {
-    const isMobile = window.innerWidth <= 640;
-    // desktop: เปิดเมื่อ !hidden, mobile: เปิดเมื่อ .show
-    const isOpen = isMobile
-      ? sidebar.classList.contains("show")
-      : !sidebar.classList.contains("hidden");
-    bodyEl.classList.toggle("sidebar-open", isOpen); // <-- ตัวนี้ทำให้ content ถูกดัน
+  const setSidebarHeightVar = () => {
+    // ค่าความสูงจริงของ sidebar ตอนเปิด ใช้ดัน content ลง
+    const h = sidebar.scrollHeight;
+    bodyEl.style.setProperty("--sidebar-height", h + "px");
   };
 
-  // ปุ่ม ☰
+  const openSidebar = () => {
+    sidebar.classList.add("show");
+    bodyEl.classList.add("sidebar-open");
+    setSidebarHeightVar();
+  };
+
+  const closeSidebar = () => {
+    sidebar.classList.remove("show");
+    bodyEl.classList.remove("sidebar-open");
+    bodyEl.style.setProperty("--sidebar-height", "0px");
+  };
+
   toggleBtn?.addEventListener("click", () => {
-    const isMobile = window.innerWidth <= 640;
-    if (isMobile) {
-      sidebar.classList.toggle("show");     // มือถือ slide ลง/ขึ้น
+    if (sidebar.classList.contains("show")) {
+      closeSidebar();
     } else {
-      sidebar.classList.toggle("hidden");   // เดสก์ท็อป slide ออก/เข้า
+      openSidebar();
     }
-    syncPush(); // อัปเดตการดัน content ทุกครั้งที่กด
   });
 
-  // ให้ sync ครั้งแรก + เวลารีไซซ์
-  syncPush();
-  window.addEventListener("resize", syncPush);
+  // อัปเดตความสูงเมื่อรีไซซ์ (โดยเฉพาะตอน tablet หมุนจอ)
+  window.addEventListener("resize", () => {
+    if (sidebar.classList.contains("show")) setSidebarHeightVar();
+  });
 });
