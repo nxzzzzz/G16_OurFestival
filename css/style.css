@@ -287,15 +287,34 @@ footer p {
   .content {
     margin-left: var(--sidebar-w);
     margin-right: 0;
+    padding: 0;
+    width: 100%;
     flex-direction: column;
   }
+  .content img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    border-radius: 10px;        /* ลบโค้งถ้าอยากให้เต็มจริงๆ */
+  }
+
+  .sidebar {
+    width: var(--sidebar-w);
+    background: transparent;
+    position: fixed;
+  }
+
   .secondary-content {
     position: static;
     width: 100%;
     height: auto;
-    margin-top: 12px;
+    margin: 0;
   }
-  footer { margin-top: 0; }
+
+  footer {
+    margin-top: 0;
+  }
 }
 
 @media (max-width: 640px) {
