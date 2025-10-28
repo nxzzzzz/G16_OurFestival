@@ -287,8 +287,8 @@ footer p {
   .content {
     flex: 1;
     margin-left: 0;
-    margin-right: var(--secondary-w);
-    padding: 20px;
+    margin-right: 0;
+    padding: 0;
     color: #d46a2c;
     display: flex;
     flex-direction: column;
