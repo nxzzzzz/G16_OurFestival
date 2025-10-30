@@ -299,36 +299,32 @@ footer p {
   }
   .sidebar.show { transform: translateX(0); }
 
-  /* content ชิดซ้าย + กินเต็มความกว้าง */
   .content {
-    margin: 0;            /* ไม่มี margin ซ้าย/ขวา */
-    padding: 0 12px;      /* เผื่อขอบนิดเดียวพอ */
+    margin: 0; 
+    padding: 0 12px;
     width: 100%;
     box-sizing: border-box;
   }
 
-  /* ตอนเปิด sidebar: ดันลง + ยกเลิก margin-left จาก desktop */
   body.sidebar-open .content {
     margin-top: var(--sidebar-height, 0px);
-    margin-left: 0 !important;   /* กันโดนกฎเดสก์ท็อปผลักไปขวา */
+    margin-left: 0 !important;
     transition: margin-top .3s ease;
   }
 
-  /* ยกเลิกการ “กึ่งกลาง” ของ Bootstrap container ให้ชิดซ้าย */
   .content .container {
     max-width: 100%;
-    margin-left: 0;  /* ไม่กึ่งกลาง */
+    margin-left: 0; 
     margin-right: 0;
     padding-left: 0;
     padding-right: 0;
   }
 
-  /* รูปไม่กึ่งกลาง ให้ชิดซ้ายด้วย */
   .content img {
     display: block;
     width: 100%;
     height: auto;
-    margin: 16px 0 0 0;  /* เอา auto ออก จะไม่กึ่งกลางแล้ว */
+    margin: 16px 0 0 0;
     border-radius: 10px;
   }
   .secondary-content {
@@ -345,7 +341,7 @@ footer p {
 
 @media (max-width: 640px) {
   body {
-    display: flex;
+    display: block;
     flex-direction: column;
   }
   #toggleSidebar {
@@ -361,12 +357,29 @@ footer p {
     transform: translateY(-100%);
     transition: transform 0.3s ease;
     z-index: 1000;
+    text-align: center;
   }
   .sidebar.show { transform: translateY(0); }
-  .content {
-    margin: 0;
-    padding: 10px;
+
+  body.sidebar-open .content {
+    margin-top: var(--sidebar-height, 0px);
+    transition: margin-top 0.3s ease;
   }
+
+  .content {
+    margin: 0 auto !important; /* ✅ จัดกลางจริง */
+    width: 100%;
+    max-width: 95%; /* ✅ ป้องกันตกขอบ */
+    padding: 15px 10px;
+    box-sizing: border-box;
+    text-align: center;
+  }
+
+  .content * {
+    max-width: 100%; /* ✅ รูปและ text ไม่ล้น */
+    box-sizing: border-box;
+  }
+
   .secondary-content {
     position: static;
     width: 100%;
