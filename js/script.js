@@ -4,23 +4,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
 document.addEventListener("DOMContentLoaded", () => {
   const toggleBtn = document.getElementById("toggleSidebar");
-  const sidebar  = document.querySelector(".sidebar");
-  const bodyEl   = document.body;
+  const sidebar = document.querySelector(".sidebar");
+  const bodyEl = document.body;
 
   const setSidebarHeightVar = () => {
-    // ค่าความสูงจริงของ sidebar ตอนเปิด ใช้ดัน content ลง
     const h = sidebar.scrollHeight;
     bodyEl.style.setProperty("--sidebar-height", h + "px");
   };
 
   const openSidebar = () => {
-    sidebar.classList.add("show");
-    bodyEl.classList.add("sidebar-open");
-    setSidebarHeightVar();
+  sidebar.classList.add("show");
+  sidebar.classList.remove("hidden");
+  bodyEl.classList.add("sidebar-open");
+
+  setTimeout(() => {
+    const h = sidebar.scrollHeight;
+    bodyEl.style.setProperty("--sidebar-height", h + "px");
+  }, 300);
   };
 
   const closeSidebar = () => {
     sidebar.classList.remove("show");
+    sidebar.classList.add("hidden");
     bodyEl.classList.remove("sidebar-open");
     bodyEl.style.setProperty("--sidebar-height", "0px");
   };
@@ -33,7 +38,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // อัปเดตความสูงเมื่อรีไซซ์ (โดยเฉพาะตอน tablet หมุนจอ)
   window.addEventListener("resize", () => {
     if (sidebar.classList.contains("show")) setSidebarHeightVar();
   });

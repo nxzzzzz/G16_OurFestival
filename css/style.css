@@ -97,7 +97,11 @@ header a:hover {
   transition: transform 0.3s ease;
   z-index: 1000;
 }
-.sidebar.hidden { transform: translateX(-100%); }
+
+.sidebar.hidden { 
+  transform: translateX(-100%); 
+}
+
 .sidebar .nav-link {
   color: #893708;
   transition: 0.2s;
@@ -373,6 +377,7 @@ footer p {
     padding: 15px 10px;
     box-sizing: border-box;
     text-align: center;
+    z-index: 1;
   }
 
   .content * {
