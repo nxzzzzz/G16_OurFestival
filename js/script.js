@@ -7,20 +7,19 @@ document.addEventListener("DOMContentLoaded", () => {
   const sidebar = document.querySelector(".sidebar");
   const bodyEl = document.body;
 
+  sidebar.classList.add("hidden");
+
   const setSidebarHeightVar = () => {
     const h = sidebar.scrollHeight;
     bodyEl.style.setProperty("--sidebar-height", h + "px");
   };
 
   const openSidebar = () => {
-  sidebar.classList.add("show");
-  sidebar.classList.remove("hidden");
-  bodyEl.classList.add("sidebar-open");
+    sidebar.classList.add("show");
+    sidebar.classList.remove("hidden");
+    bodyEl.classList.add("sidebar-open");
 
-  setTimeout(() => {
-    const h = sidebar.scrollHeight;
-    bodyEl.style.setProperty("--sidebar-height", h + "px");
-  }, 300);
+    setTimeout(() => setSidebarHeightVar(), 50);
   };
 
   const closeSidebar = () => {
