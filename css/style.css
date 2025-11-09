@@ -101,7 +101,7 @@ header a:hover {
 }
 
 .sidebar .nav-link {
-  color: #893708;
+  color: #d46a2c;
   transition: 0.2s;
 }
 .sidebar .nav-link:hover {
@@ -215,7 +215,7 @@ header h1 > .nav-link{
   position: relative;
   display: inline-block;
   padding: .1rem .6rem;
-  background: linear-gradient(180deg,#FFE8A3 0%, #FFB23E 55%, #F28A0C 100%);
+  background: linear-gradient(180deg,#FFE8A3 0%, #d46a2c 55%, #d46a2c 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;                 /* ให้เห็นเป็นไล่เฉดแทนสีตัวอักษร */
@@ -241,7 +241,7 @@ header h1 > .nav-link::after{
   width: clamp(60px, 18vw, 240px);
   height: 2px;
   transform: translateY(-50%);
-  background: linear-gradient(90deg, transparent, rgba(255,174,0,.9), transparent);
+  background: linear-gradient(90deg, transparent, #d46a2c, transparent);
   filter: drop-shadow(0 0 8px rgba(255,120,0,.4));
 }
 header h1 > .nav-link::before{ right: 100%; margin-right: 16px; }
@@ -399,11 +399,13 @@ footer {
   display: flex;
   flex-direction: column;
   margin-top: auto;
-  background: linear-gradient(90deg, #2a0047, #3a0066);
+  background: 
+  radial-gradient(120% 180% at 50% 110%, rgba(255,130,0,.22) 0%, rgba(255,130,0,0) 60%),
+    linear-gradient(180deg,#0c0b12 0%, #131223 60%, #23161a 100%);
   box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.4);
 }
 footer p {
-  color: #ffb84d;
+  color: #d46a2c;
   font-weight: 500;
 }
 
@@ -431,8 +433,11 @@ footer p {
   
   .sidebar {
     transform: translateX(-100%);
-    background: #1a0802;
+    background:
+    radial-gradient(120% 180% at 50% 110%, rgba(255,130,0,.22) 0%, rgba(255,130,0,0) 60%),
+    linear-gradient(180deg,#0c0b12 0%, #131223 60%, #23161a 100%);
     box-shadow: 4px 0 10px rgba(0,0,0,0.3);
+    border-radius: 10px;
   }
   .content {
     margin: 0 auto;
