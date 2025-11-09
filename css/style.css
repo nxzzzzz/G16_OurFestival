@@ -97,6 +97,7 @@ header a:hover {
   transition: transform 0.3s ease;
   z-index: 1000;
   transform: translateX(0);
+  font-family: 'English creepy', sans-serif;
 }
 
 .sidebar .nav-link {
