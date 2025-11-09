@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="th">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
 </head>
+
 <body>
   <header>
     <button id="toggleSidebar" class="btn btn-light position-absolute start-0 ms-2 mt-2">☰</button>
@@ -15,33 +17,34 @@
   </header>
 
   <nav class="sidebar">
-  <h4><a href="index.html" class="nav-link">Our Festival</a></h4>
-  <ul class="nav flex-column">
-    <li class="nav-item nav-split">
-  <div class="d-flex align-items-center">
-    <a class="nav-link flex-grow-1 pe-2" href="booth-directory.html"><i class="bi bi-shop-window"></i> Booths</a>
-
-    <button class="btn btn-sm btn-outline-secondary caret-toggle"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#boothSubmenu"
-            aria-expanded="false" aria-controls="boothSubmenu">▾</button>
-  </div>
-
-  <div class="collapse ps-3 mt-1" id="boothSubmenu">
+    <h4><a href="index.html" class="nav-link">Our Festival</a></h4>
     <ul class="nav flex-column">
-      <li class="nav-item"><a href="booth1.html" class="nav-link">Booth 1</a></li>
-      <li class="nav-item"><a href="booth2.html" class="nav-link">Booth 2</a></li>
-      <li class="nav-item"><a href="booth3.html" class="nav-link">Booth 3</a></li>
-      <li class="nav-item"><a href="booth4.html" class="nav-link">Booth 4</a></li>
-    </ul>
-  </div>
-</li>
+      <li class="nav-item nav-split">
+        <div class="d-flex align-items-center">
+          <a class="nav-link flex-grow-1 pe-2" href="booth-directory.html"><i class="bi bi-shop-window"></i> Booths</a>
 
-    <li class="nav-item">
-      <a href="feedback.html" class="nav-link"><i class="bi bi-chat-left-dots"></i> Feedback</a>
-    </li>
-  </ul>
+          <button class="btn btn-sm btn-outline-secondary caret-toggle" type="button" data-bs-toggle="collapse"
+            data-bs-target="#boothSubmenu" aria-expanded="false" aria-controls="boothSubmenu">▾</button>
+        </div>
+
+        <div class="collapse ps-3 mt-1" id="boothSubmenu">
+          <ul class="nav flex-column">
+            <li class="nav-item"><a href="booth1.html" class="nav-link">Trick-or-Treats</a></li>
+            <li class="nav-item"><a href="booth2.html" class="nav-link">Soul’s Kitchen</a></li>
+            <li class="nav-item"><a href="booth3.html" class="nav-link">Faces of Fear</a></li>
+            <li class="nav-item"><a href="booth4.html" class="nav-link">Moonlight Market</a></li>
+          </ul>
+        </div>
+      </li>
+
+      <li class="nav-item">
+        <a href="register.html" class="nav-link"><i class="bi bi-person-plus"></i> register</a>
+      </li>
+
+      <li class="nav-item">
+        <a href="feedback.html" class="nav-link"><i class="bi bi-chat-left-dots"></i> Feedback</a>
+      </li>
+    </ul>
   </nav>
 
   <div class="content">
@@ -87,4 +90,5 @@
   <script src="js/script.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

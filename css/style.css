@@ -34,7 +34,7 @@
 :root {
   --sidebar-w: 220px;
   --header-h: 72px;
-  --secondary-w: 220px;
+  --secondary-w: 220px; /* ไม่ได้ใช้แล้ว แต่เก็บไว้ได้ */
 }
 
 body {
@@ -79,7 +79,7 @@ header a:hover {
 }
 
 /* =======================
-   SIDEBAR
+   SIDEBAR (Desktop Default: Visible)
 ======================= */
 .sidebar {
   position: fixed;
@@ -96,10 +96,7 @@ header a:hover {
   overflow-y: auto;          
   transition: transform 0.3s ease;
   z-index: 1000;
-}
-
-.sidebar.hidden { 
-  transform: translateX(-100%); 
+  transform: translateX(0);
 }
 
 .sidebar .nav-link {
@@ -110,12 +107,6 @@ header a:hover {
   color: #311b92;
   background: rgba(34, 31, 26, 0);
   transform: translateX(5px);
-}
-
-body.sidebar-open .content { margin-left: var(--sidebar-w); }
-
-.sidebar.show {
-  transform: translateX(0);
 }
 
 .sidebar .nav-item {
@@ -148,12 +139,10 @@ body.sidebar-open .content { margin-left: var(--sidebar-w); }
 ======================= */
 .content {
   flex: 1;
-  margin-left: 0;
-  margin-right: var(--secondary-w);
+  margin-left: var(--sidebar-w);
+  margin-right: 0;
   padding: 20px;
   color: #d46a2c;
-  display: flex;
-  flex-direction: column;
   gap: 20px;
   transition: margin-left 0.3s ease;
 }
@@ -173,18 +162,7 @@ body.sidebar-open .content { margin-left: var(--sidebar-w); }
 }
 
 .secondary-content {
-  position: fixed;
-  right: 0;
-  top: var(--header-h);
-  width: var(--secondary-w);
-  height: 100vh;
-  background-color: rgba(68, 11, 7, 0.8);
-  color: #d97b2e;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
-  overflow-y: auto;
-  z-index: 500;
+  display: none;
 }
 
 .row.equal-height > .col-md-4,
@@ -221,7 +199,7 @@ h1 {
 h2 {
   font-family: 'spicy', sans-serif;
   font-size: 1.8rem;
-  margin: 30px 0;
+  margin: auto;
 }
 h3, h5 {
   font-family: 'Thai creepy', sans-serif;
@@ -293,7 +271,7 @@ footer p {
 }
 
 /* =======================
-   TOGGLE BUTTON
+   TOGGLE BUTTON (แก้ไข)
 ======================= */
 #toggleSidebar {
   z-index: 1200;
@@ -304,118 +282,50 @@ footer p {
   border-radius: 8px;
   padding: 4px 10px;
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+  display: block; 
 }
 
 /* =======================
-   RESPONSIVE DESIGN
+   RESPONSIVE DESIGN (แก้ไขทั้งหมด)
 ======================= */
-@media (max-width: 1024px) and (min-width: 768px) {
+
+/* --- 1. MOBILE & TABLET (จอเล็กกว่า 1024px) --- */
+@media (max-width: 1024px) {
+  
   .sidebar {
-    position: fixed;
-    top: var(--header-h);
-    left: 0;
-    width: var(--sidebar-w);
-    max-height: calc(100vh - var(--header-h));
     transform: translateX(-100%);
-    transition: transform .3s ease;
-    z-index: 1000;
-    overflow-y: auto;
-    background: transparent;
+    background: #1a0802; 
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.3);
   }
-  .sidebar.show { transform: translateX(0); }
-
   .content {
-    margin: 0; 
-    padding: 0 12px;
-    width: 100%;
-    box-sizing: border-box;
-  }
-
-  body.sidebar-open .content {
-    margin-top: var(--sidebar-height, 0px);
-    margin-left: 0 !important;
-    transition: margin-top .3s ease;
-  }
-
-  .content .container {
-    max-width: 100%;
-    margin-left: 0; 
-    margin-right: 0;
+    margin-left: 0;
     padding-left: 0;
-    padding-right: 0;
+    max-width: none;
   }
 
-  .content img {
-    display: block;
-    width: 100%;
-    height: auto;
-    margin: 16px 0 0 0;
-    border-radius: 10px;
-  }
-  .secondary-content {
-    position: static;
-    width: 100%;
-    height: auto;
-    margin: 0;
-  }
-
-  footer {
-    margin-top: 0;
+  body.sidebar-open .sidebar {
+    transform: translateX(0);
   }
 }
 
-@media (max-width: 640px) {
+/* --- 2. DESKTOP (จอใหญ่กว่า 1024px) --- */
+@media (min-width: 1025px) {
+  
   .sidebar {
-    position: fixed;
-    top: var(--header-h);
-    left: 0;
-    width: var(--sidebar-w);
-    max-height: calc(100vh - var(--header-h));
-    transform: translateX(-100%);
-    transition: transform .3s ease;
-    z-index: 1000;
-    overflow-y: auto;
-    background: transparent;
+    transform: translateX(0);
   }
-  .sidebar.show { transform: translateX(0); }
-
   .content {
-    margin: 0; 
-    padding: 0 12px;
-    width: 100%;
-    box-sizing: border-box;
+    margin-left: var(--sidebar-w);
+    max-width: 1140px;
+    margin-right: auto;
   }
 
+  body.sidebar-open .sidebar {
+    transform: translateX(-100%);
+  }
   body.sidebar-open .content {
-    margin-top: var(--sidebar-height, 0px);
-    margin-left: 0 !important;
-    transition: margin-top .3s ease;
-  }
-
-  .content .container {
-    max-width: 100%;
-    margin-left: 0; 
-    margin-right: 0;
-    padding-left: 0;
-    padding-right: 0;
-  }
-
-  .content img {
-    display: block;
-    width: 100%;
-    height: auto;
-    margin: 16px 0 0 0;
-    border-radius: 10px;
-  }
-  .secondary-content {
-    position: static;
-    width: 100%;
-    height: auto;
-    margin: 0;
-  }
-
-  footer {
-    margin-top: 0;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1140px; 
   }
 }
-
