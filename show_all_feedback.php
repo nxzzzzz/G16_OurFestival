@@ -64,7 +64,7 @@ if (file_exists($file)) {
         <h1><a href="index.html" class="nav-link">HALLOWEEN</a></h1>
     </header>
 
-    <div class="content">
+    <div class="content mx-auto">
         <div class="p-3 border rounded" style="background: rgba(255,255,255,0.1); backdrop-filter: blur(10px);">
             <h3 style='text-align: center;'>สรุปข้อมูลประเมินความพึงพอใจ (ทั้งหมด)</h3>
             <p style="text-align: center;">(แสดงรายการล่าสุดก่อน)</p>
