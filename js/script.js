@@ -11,6 +11,26 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
+// js/script.js
+document.addEventListener('DOMContentLoaded', () => {
+  const header = document.querySelector('header');
+  if(!header) return;
+
+  const bats = document.createElement('div');
+  bats.className = 'bats';
+  bats.setAttribute('aria-hidden','true');
+  header.appendChild(bats);
+
+  const N = 7;                               // จำนวนค้างคาวที่ต้องการ
+  const src = 'https://em-content.zobj.net/source/animated-noto-color-emoji/356/bat_1f987.gif';    // ลิงก์รูปค้างคาว (GIF/APNG/SVG)
+  for(let i=1;i<=N;i++){
+    const img = document.createElement('img');
+    img.className = `bat bat--${i} ${i%2? 'bat--ltr':'bat--rtl'}`; // สลับทิศ
+    img.src = src; img.alt = '';
+    bats.appendChild(img);
+  }
+});
+
 //Register Validation
 document.addEventListener("DOMContentLoaded", function() {
   const form = document.getElementById("registerForm");

@@ -208,6 +208,144 @@ p {
   font-family: 'passage creepy', 'Thai creepy';
 }
 
+/* ========== Halloween header: gradient text + glow + side lines + (optional) spider ========== */
+
+/* ทำตัวอักษรเป็นไล่เฉด + ขอบเข้ม + โกลว์ */
+header h1 > .nav-link{
+  position: relative;
+  display: inline-block;
+  padding: .1rem .6rem;
+  background: linear-gradient(180deg,#FFE8A3 0%, #FFB23E 55%, #F28A0C 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;                 /* ให้เห็นเป็นไล่เฉดแทนสีตัวอักษร */
+  text-shadow:
+    0 0 8px rgba(255,145,0,.45),
+    0 0 28px rgba(255,120,0,.25);
+}
+
+/* hover ให้ยังคงเป็นไล่เฉด (ยกเลิกสีทับจาก rule เดิม) */
+header h1 > .nav-link:hover{
+  color: transparent;
+  text-shadow:
+    0 0 10px rgba(255,153,0,.70),
+    0 0 36px rgba(255,120,0,.35);
+}
+
+/* เส้นประดับซ้าย-ขวา ขนาบหัวข้อ */
+header h1 > .nav-link::before,
+header h1 > .nav-link::after{
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: clamp(60px, 18vw, 240px);
+  height: 2px;
+  transform: translateY(-50%);
+  background: linear-gradient(90deg, transparent, rgba(255,174,0,.9), transparent);
+  filter: drop-shadow(0 0 8px rgba(255,120,0,.4));
+}
+header h1 > .nav-link::before{ right: 100%; margin-right: 16px; }
+header h1 > .nav-link::after { left:  100%; margin-left:  16px; }
+
+@keyframes spider-swing{
+  0%   { transform: translateX(-50%) rotate(-8deg); }
+  50%  { transform: translateX(-50%) rotate(8deg);  }
+  100% { transform: translateX(-50%) rotate(-8deg); }
+}
+
+/* ปรับบนจอเล็ก: เส้นข้างสั้นลง และซ่อนแมงมุมกันทับคอนเทนต์ */
+@media (max-width: 600px){
+  header h1 > .nav-link::before,
+  header h1 > .nav-link::after{ width: 18vw; }
+  header h1::before,
+  header h1::after{ display: none; }
+  header { padding-bottom: 8px; }
+}
+
+/* === HEADER VARIANT B: BATS === */
+header{
+  position: relative; overflow: hidden; isolation:isolate;
+  background:
+    radial-gradient(120% 180% at 50% 110%, rgba(255,130,0,.22) 0%, rgba(255,130,0,0) 60%),
+    repeating-radial-gradient(circle at 30% 20%, rgba(255,255,255,.08) 0 1px, transparent 1px 18px),
+    linear-gradient(180deg,#0c0b12 0%, #131223 60%, #23161a 100%);
+}
+/* ===================== Replace bats (Variant B) with external image ===================== */
+/* 1) ใส่ลิงก์ไฟล์รูปค้างคาวที่นี่ (GIF/APNG/SVG/PNG) */
+:root{
+  --bat-url: url("https://em-content.zobj.net/source/animated-noto-color-emoji/356/bat_1f987.gif"); /* <— เปลี่ยนลิงก์รูปตรงนี้ */
+  --bat-size: clamp(22px, 2.6vw, 36px);
+}
+
+/* 2) ลบ/คอมเมนต์กฎเก่าของแบบ B ที่ใช้ content:"🦇   🦇     🦇"; ทิ้งก่อนนะครับ */
+
+
+/* เส้นทางบิน (ปรับเวลา/องศา/ลูปได้) */
+@keyframes batFlyA{
+  0%   { transform: translateX(0)     translateY(0)    rotate(-4deg); opacity:.95; }
+  40%  { transform: translateX(60vw)  translateY(-6px) rotate(2deg);  }
+  80%  { transform: translateX(110vw) translateY(2px)  rotate(-2deg); }
+  100% { transform: translateX(130vw) translateY(6px)  rotate(0deg);  opacity:.75; }
+}
+@keyframes batFlyB{
+  0%   { transform: translateX(0)     translateY(4px)  rotate(3deg);  opacity:.9; }
+  50%  { transform: translateX(75vw)  translateY(-4px) rotate(-3deg); }
+  100% { transform: translateX(140vw) translateY(0)    rotate(0deg);  opacity:.7; }
+}
+
+/* จอเล็ก: ย่อขนาดและสั้นทางบินหน่อย */
+@media (max-width: 600px){
+  :root{ --bat-size: clamp(20px, 5.5vw, 28px); }
+  header::after{ top: 16%; }
+  header::before{ top: 30%; }
+}
+
+/* เคารพผู้ใช้ที่ปิดแอนิเมชัน */
+@media (prefers-reduced-motion: reduce){
+  header::before, header::after{ animation: none; }
+}
+
+/* ===== Flying bats: multi instances + alternate directions ===== */
+header{ position: sticky; overflow:hidden; isolation:isolate; } /* คง sticky เดิมไว้ */
+header > *{ position: relative; z-index: 1; }                   /* เนื้อหาอยู่เหนือค้างคาว */
+.bats{
+  position:absolute; inset:0; z-index:0; pointer-events:none;
+}
+.bat{
+  position:absolute; top: var(--top,18%); width: var(--size, clamp(22px,2.6vw,36px));
+  height:auto; filter: drop-shadow(0 0 6px rgba(255,160,0,.35));
+  opacity: var(--alpha,.9); will-change: transform;
+}
+.bat--ltr{ left:-20vw;  animation: fly-ltr var(--speed,16s) linear infinite var(--delay,0s); }
+.bat--rtl{ right:-20vw; animation: fly-rtl var(--speed,18s) linear infinite var(--delay,0s); }
+
+/* เส้นทางบินซ้าย->ขวา และขวา->ซ้าย (สลับทิศ) */
+@keyframes fly-ltr{
+  0%   { transform: translateX(0) translateY(0) rotate(-4deg); opacity:.95; }
+  50%  { transform: translateX(70vw) translateY(-6px) rotate(3deg); }
+  100% { transform: translateX(140vw) translateY(2px) rotate(0deg);  opacity:.75; }
+}
+@keyframes fly-rtl{
+  0%   { transform: translateX(0)    translateY(4px)  rotate(4deg)  scaleX(-1); opacity:.9; }
+  50%  { transform: translateX(-70vw) translateY(-4px) rotate(-3deg) scaleX(-1); }
+  100% { transform: translateX(-140vw) translateY(0)   rotate(0deg)  scaleX(-1); opacity:.7; }
+}
+
+/* ปรับตำแหน่ง/ขนาด/ความเร็ว/ดีเลย์รายตัวได้ด้วย CSS vars */
+.bat--1{ --top:14%; --size:clamp(24px,3vw,40px); --speed:15s; --delay:-2s; }
+.bat--2{ --top:26%; --size:clamp(22px,2.4vw,34px); --speed:19s; --delay:-5s; --alpha:.85; }
+.bat--3{ --top:18%; --size:clamp(20px,2.2vw,30px); --speed:17s; --delay:-8s; }
+.bat--4{ --top:30%; --size:clamp(26px,2.8vw,38px); --speed:21s; --delay:-11s; --alpha:.8; }
+.bat--5{ --top:11%; --size:clamp(18px,2vw,28px);  --speed:16s; --delay:-14s; }
+
+/* มือถือ: ย่อขนาด/ลดความหนาแน่น */
+@media (max-width:600px){
+  .bat{ --size: clamp(18px,5.5vw,28px); }
+}
+@media (prefers-reduced-motion: reduce){
+  .bat{ animation: none; }
+}
+
 /* =======================
    FORM & BUTTONS
 ======================= */
