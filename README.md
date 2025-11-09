@@ -9,3 +9,4 @@
 ภาณุพงศ์ จินดาพรพิทักษ์ 6809650655 Software Architect, Scrum Master
 รัชชานนท์ ปานแป้น 6809650689 Product Owner
 สิทธิกร แซ่เตีย 6809650739 Tester
+ชลฑาล ปัญญากาวิน 6809650390 Business analyst
