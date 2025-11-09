@@ -1,14 +1,8 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+$file = 'feedback_db.txt';
 
-$file = 'feedback_db.txt'; // ฐานข้อมูลของ Feedback
-
-// --- 1. (IF POST) Save new data ---
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
-    // ดึงข้อมูลจากฟอร์ม (ตาม 'name' ที่เราเพิ่งเพิ่ม)
     $visitor = htmlspecialchars($_POST['visitor']);
     $rating = htmlspecialchars($_POST['rating']);
     $comment = htmlspecialchars($_POST['comment']);
@@ -23,26 +17,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     file_put_contents($file, $data_line, FILE_APPEND | LOCK_EX);
 }
 
-// --- 2. (ALWAYS) Read all data and display page ---
 $all_entries_html = "";
 if (file_exists($file)) {
     $lines = file($file, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-    $lines = array_reverse($lines); // Show newest first
+    $lines = array_reverse($lines);
 
     foreach ($lines as $line) {
         $entry = json_decode($line, true);
-        
-        // สร้างดาวตามคะแนน (Rating)
-        $stars = str_repeat("⭐", $entry['rating']); // เช่น 3 ดาว = "⭐⭐⭐"
-        
+        $stars = str_repeat("⭐", $entry['rating']);
         $all_entries_html .= "<div class='list-group-item'>";
         $all_entries_html .= "<strong>" . $entry['visitor'] . "</strong> (ให้คะแนน: " . $stars . ")<br>";
-        
-        // แสดง comment ถ้ามี
         if (!empty($entry['comment'])) {
              $all_entries_html .= "<p style='white-space: pre-wrap; margin-top: 5px; margin-bottom: 0;'>" . $entry['comment'] . "</p>";
         }
-       
+    
         $all_entries_html .= "</div>";
     }
 } else {

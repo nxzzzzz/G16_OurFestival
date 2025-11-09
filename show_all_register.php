@@ -1,45 +1,28 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+$file = 'registrations_db.txt';
 
-$file = 'registrations_db.txt'; // นี่คือไฟล์ที่เราจะใช้เป็นฐานข้อมูล
-
-// --- 1. ตรวจสอบว่ามีการส่งข้อมูลใหม่มาหรือไม่ (ถ้ามี ให้บันทึกก่อน) ---
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    
-    // ดึงข้อมูลจากฟอร์ม
     $fname = htmlspecialchars($_POST['first-name']);
     $lname = htmlspecialchars($_POST['last-name']);
     $email = htmlspecialchars($_POST['email']);
-
-    // สร้างข้อมูลที่จะบันทึก (เราจะใช้ JSON เพื่อให้เก็บข้อมูลเป็นระเบียบ)
     $new_entry = [
         'fname' => $fname,
         'lname' => $lname,
         'email' => $email
     ];
 
-    // แปลงเป็น JSON และเพิ่มการขึ้นบรรทัดใหม่
     $data_line = json_encode($new_entry) . "\n";
 
-    // บันทึกข้อมูลต่อท้ายลงในไฟล์
     file_put_contents($file, $data_line, FILE_APPEND | LOCK_EX);
 }
 
-// --- 2. อ่านข้อมูลทั้งหมดจากไฟล์ (ไม่ว่าจะ POST หรือไม่) ---
-$all_entries_html = ""; // เตรียมตัวแปรไว้เก็บ HTML
+$all_entries_html = "";
 if (file_exists($file)) {
-    // อ่านไฟล์ทั้งไฟล์มาเป็น Array (แต่ละบรรทัดคือ 1 element)
     $lines = file($file, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-    // กลับลำดับ Array (ให้รายการใหม่สุดขึ้นก่อน)
     $lines = array_reverse($lines);
 
     foreach ($lines as $line) {
-        // แปลง JSON กลับเป็น Array
         $entry = json_decode($line, true);
-        
-        // สร้าง HTML สำหรับแสดงผล (ตามที่คุณขอในคำสั่งแรกสุด)
         $all_entries_html .= "<div class='list-group-item'>";
         $all_entries_html .= "<strong>" . $entry['fname'] . " " . $entry['lname'] . "</strong><br>";
         $all_entries_html .= "<small>" . $entry['email'] . "</small>";
