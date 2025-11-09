@@ -139,12 +139,10 @@ header a:hover {
 ======================= */
 .content {
   flex: 1;
-  margin-left: var(--sidebar-w);
-  margin-right: 0;
   padding: 20px;
   color: #d46a2c;
   gap: 20px;
-  transition: margin-left 0.3s ease;
+  transition: padding-left 0.3s ease;
 }
 
 .content img {
@@ -294,38 +292,33 @@ footer p {
   
   .sidebar {
     transform: translateX(-100%);
-    background: #1a0802; 
-    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.3);
+    background: #1a0802;
+    box-shadow: 4px 0 10px rgba(0,0,0,0.3);
   }
   .content {
-    margin-left: 0;
+    margin: 0 auto;
+    max-width: 1140px;
     padding-left: 0;
-    max-width: none;
   }
-
-  body.sidebar-open .sidebar {
-    transform: translateX(0);
-  }
+  body.sidebar-open .sidebar { transform: translateX(0); }
 }
 
 /* --- 2. DESKTOP (จอใหญ่กว่า 1024px) --- */
 @media (min-width: 1025px) {
   
-  .sidebar {
-    transform: translateX(0);
-  }
+  .sidebar { transform: translateX(0); }
+
   .content {
-    margin-left: var(--sidebar-w);
     max-width: 1140px;
-    margin-right: auto;
+    margin: 0 auto;
+    padding-left: var(--sidebar-w);
   }
 
-  body.sidebar-open .sidebar {
-    transform: translateX(-100%);
+  body.sidebar-open .sidebar { 
+    transform: translateX(-100%); 
   }
+  
   body.sidebar-open .content {
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 1140px; 
+    padding-left: 0;
   }
 }
