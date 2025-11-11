@@ -21,7 +21,6 @@
   src: url('../fonts/Hello Bones.ttf') format('truetype');
   font-display: swap;
 }
-
 /* =======================
    BASE STYLES
 ======================= */
@@ -39,7 +38,7 @@
 
 body {
   font-family: 'Thai creepy', sans-serif;
-  color: #9b1919;
+  color: #a00000;
   background: url("../image/halloween_background.jpeg") no-repeat center center fixed;
   background-size: cover;
   min-height: 100vh;
@@ -231,12 +230,12 @@ header a:hover {
 
 .card-title {
   font-size: 1.4rem;
-  color: #ffb84d;
+  color: #5f4114;
   text-shadow: 0 0 6px rgba(255,140,0,0.50);
 }
 
 .card-text {
-  color: #e6be91;
+  color: #8a510f;
   opacity: 0.9;
 }
 
@@ -245,8 +244,13 @@ header a:hover {
   text-shadow: 0 0 6px rgba(0,0,0,0.85);
 }
 
+.card-body p {
+  color: #c88345;
+  text-shadow: 0 0 6px rgba(0,0,0,0.85);
+}
+
 .content-box {
-  background: rgba(0, 0, 0, 0.45); 
+  background: rgba(94, 82, 82, 0.45); 
   backdrop-filter: blur(6px);    
   border: 2px solid #ff7b00;        
   border-radius: 16px;            
@@ -519,6 +523,7 @@ footer p {
     margin: 0 auto;
     max-width: 1140px;
     padding-left: 0;
+    
   }
   body.sidebar-open .sidebar { transform: translateX(0); }
 }
