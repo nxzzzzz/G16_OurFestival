@@ -62,11 +62,12 @@ header {
 
 header h1 {
   font-family: 'English creepy', sans-serif;
-  font-size: 2.8rem;
-  letter-spacing: 1.5px;
-  text-align: center;
-  padding: 1rem;
-  color: #ffb84d;
+  font-size: 3rem; 
+  letter-spacing: 2px;
+  color: #ffcc66;
+  text-shadow:
+    0 0 6px #ff8c00,
+    0 0 20px #ff6f00;
 }
 
 header a {
@@ -75,7 +76,10 @@ header a {
   transition: 0.3s;
 }
 header a:hover {
-  color: #2a0047;
+  color: #fff3c2;
+  text-shadow:
+    0 0 12px #ffb84d,
+    0 0 36px #ff9100;
 }
 
 /* =======================
