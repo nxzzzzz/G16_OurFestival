@@ -29,23 +29,17 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
 }
 
 :root {
   --sidebar-w: 220px;
   --header-h: 72px;
   --secondary-w: 220px; /* ไม่ได้ใช้แล้ว แต่เก็บไว้ได้ */
-  --primary-color: #ff9100; 
-  --secondary-color: #d46a2c;
-  --bg-dark: #0c0b12; 
-  --text-light: #fff3c2; 
 }
-
 
 body {
   font-family: 'Thai creepy', sans-serif;
-  color: #fff;
+  color: #9b1919;
   background: url("../image/halloween_background.jpeg") no-repeat center center fixed;
   background-size: cover;
   min-height: 100vh;
@@ -64,7 +58,6 @@ header {
   background: linear-gradient(90deg, #2e0e04, #ff9100);
   color: #fff;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  border-bottom: 2px solid rgba(255, 145, 0, 0.2);
 }
 
 header h1 {
@@ -72,11 +65,9 @@ header h1 {
   font-size: 3rem; 
   letter-spacing: 2px;
   color: #ffcc66;
-  -webkit-text-stroke: 1px #8b4513; /* Darker brown stroke */
-  text-shadow: 
-  0 0 10px #ff8c00,
-  0 0 30px #ff6f00,
-  0 0 5px rgba(0, 0, 0, 0.6)
+  text-shadow:
+    0 0 6px #ff8c00,
+    0 0 20px #ff6f00;
 }
 
 header a {
@@ -188,6 +179,33 @@ header a:hover {
   width: 100%;
   flex: 1 1 auto;
 }
+
+.card {
+  background: linear-gradient(
+      180deg,
+      rgba(20, 8, 4, 0.72) 0%,
+      rgba(10, 5, 3, 0.80) 50%,
+      rgba(0, 0, 0, 0.88) 100%
+  );
+  border: 1px solid rgba(255, 120, 0, 0.18);
+  border-radius: 18px;
+  backdrop-filter: blur(10px);
+  overflow: hidden;
+  transition: .35s ease;
+  box-shadow:
+    0 4px 18px rgba(0,0,0,0.55),
+    0 0 14px rgba(255,100,0,.20),
+    inset 0 0 25px rgba(255,120,0,0.10);
+}
+
+.card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow:
+    0 6px 22px rgba(0,0,0,0.55),
+    0 0 20px rgba(255,150,0,0.45),
+    0 0 50px rgba(255,90,0,0.25);
+}
+
 .row.equal-height .card .card-img-top,
 .row.equal-height .card img.card-img-top,
 .row.equal-height .card .card-image {
@@ -198,6 +216,35 @@ header a:hover {
   border-top-left-radius: .375rem;
   border-top-right-radius: .375rem;
 }
+
+.card img {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+  transition: .4s ease;
+}
+
+.card:hover img {
+  transform: scale(1.07);
+  filter: brightness(1.0) contrast(1.05);
+}
+
+.card-title {
+  font-size: 1.4rem;
+  color: #ffb84d;
+  text-shadow: 0 0 6px rgba(255,140,0,0.50);
+}
+
+.card-text {
+  color: #e6be91;
+  opacity: 0.9;
+}
+
+.card-body h5 {
+  color: #c88345;
+  text-shadow: 0 0 6px rgba(0,0,0,0.85);
+}
+
 /* =======================
    HEADINGS & TEXT
 ======================= */
@@ -212,7 +259,12 @@ h2 {
   font-family: 'spicy', sans-serif;
   font-size: 1.8rem;
   margin: auto;
+  text-shadow:
+  0 0 8px rgba(255,120,0,.45),
+  0 0 20px rgba(255,130,0,.35),
+  0 0 40px rgba(255,90,0,.25);
 }
+
 h3, h5 {
   font-family: 'Thai creepy', sans-serif;
   color: #ffb84d;
