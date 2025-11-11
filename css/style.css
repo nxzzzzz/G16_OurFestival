@@ -29,13 +29,19 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
 }
 
 :root {
   --sidebar-w: 220px;
   --header-h: 72px;
   --secondary-w: 220px; /* ไม่ได้ใช้แล้ว แต่เก็บไว้ได้ */
+  --primary-color: #ff9100; 
+  --secondary-color: #d46a2c;
+  --bg-dark: #0c0b12; 
+  --text-light: #fff3c2; 
 }
+
 
 body {
   font-family: 'Thai creepy', sans-serif;
@@ -58,6 +64,7 @@ header {
   background: linear-gradient(90deg, #2e0e04, #ff9100);
   color: #fff;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  border-bottom: 2px solid rgba(255, 145, 0, 0.2);
 }
 
 header h1 {
@@ -65,9 +72,11 @@ header h1 {
   font-size: 3rem; 
   letter-spacing: 2px;
   color: #ffcc66;
-  text-shadow:
-    0 0 6px #ff8c00,
-    0 0 20px #ff6f00;
+  -webkit-text-stroke: 1px #8b4513; /* Darker brown stroke */
+  text-shadow: 
+  0 0 10px #ff8c00,
+  0 0 30px #ff6f00,
+  0 0 5px rgba(0, 0, 0, 0.6)
 }
 
 header a {
