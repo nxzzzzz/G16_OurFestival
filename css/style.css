@@ -245,6 +245,17 @@ header a:hover {
   text-shadow: 0 0 6px rgba(0,0,0,0.85);
 }
 
+.content-box {
+  background: rgba(0, 0, 0, 0.45); 
+  backdrop-filter: blur(6px);    
+  border: 2px solid #ff7b00;        
+  border-radius: 16px;            
+  padding: 25px;
+  box-shadow: 0 0 10px rgba(255, 123, 0, 0.5);  
+  padding: 40px 50px;        
+  margin-bottom: 0 30px;
+}
+
 /* =======================
    HEADINGS & TEXT
 ======================= */
