@@ -1,35 +1,41 @@
 <?php
-$file = 'registrations_db.txt';
+$file = 'registrations.json';
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $fname = htmlspecialchars($_POST['first-name']);
-    $lname = htmlspecialchars($_POST['last-name']);
-    $email = htmlspecialchars($_POST['email']);
-    $new_entry = [
-        'fname' => $fname,
-        'lname' => $lname,
-        'email' => $email
-    ];
+$all_data = [];
+if (file_exists($file)) {
+    $json_data = file_get_contents($file);
+    $all_data = json_decode($json_data, true);
 
-    $data_line = json_encode($new_entry) . "\n";
-
-    file_put_contents($file, $data_line, FILE_APPEND | LOCK_EX);
+    if (!is_array($all_data)) {
+        $all_data = [];
+    }
 }
 
-$all_entries_html = "";
-if (file_exists($file)) {
-    $lines = file($file, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-    $lines = array_reverse($lines);
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    
+    $new_entry = [
+        'fname' => htmlspecialchars($_POST['first-name']),
+        'lname' => htmlspecialchars($_POST['last-name']),
+        'email' => htmlspecialchars($_POST['email'])
+    ];
 
-    foreach ($lines as $line) {
-        $entry = json_decode($line, true);
+    array_unshift($all_data, $new_entry);
+
+    $new_json_data = json_encode($all_data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+
+    file_put_contents($file, $new_json_data, LOCK_EX);
+}
+
+$all_entries_html = ""; 
+if (empty($all_data)) {
+    $all_entries_html = "<p class='text-center'>ยังไม่มีผู้ลงทะเบียน</p>";
+} else {
+    foreach ($all_data as $entry) {
         $all_entries_html .= "<div class='list-group-item'>";
         $all_entries_html .= "<strong>" . $entry['fname'] . " " . $entry['lname'] . "</strong><br>";
         $all_entries_html .= "<small>" . $entry['email'] . "</small>";
         $all_entries_html .= "</div>";
     }
-} else {
-    $all_entries_html = "<p class='text-center'>ยังไม่มีผู้ลงทะเบียน</p>";
 }
 ?>
 
@@ -39,16 +45,15 @@ if (file_exists($file)) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>สรุปผู้ลงทะเบียนทั้งหมด</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css?v=11"> <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
     <header>
         <h1><a href="index.html" class="nav-link">HALLOWEEN</a></h1>
     </header>
 
-    <main class="content mx-auto">
-        <div class="p-3 border rounded" style="background: rgba(255,255,255,0.1); backdrop-filter: blur(10px);">
+    <main class="container my-4">
+        <div class="p-3 border rounded" style="background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); max-width: 800px; margin: auto;">
             <h3 style='text-align: center;'>สรุปข้อมูลผู้ลงทะเบียน (ทั้งหมด)</h3>
             <p style="text-align: center;">(แสดงรายการล่าสุดก่อน)</p>
             <hr style='border-color: #ffb84d;'>
@@ -58,7 +63,7 @@ if (file_exists($file)) {
             </div>
 
             <div class="text-center mt-4">
-                <a href="register.html" class="btn btn-secondary">ลงทะเบียนเพิ่ม</a>
+                <a href="register.html" class="btn btn-secondary">กลับไปลงทะเบียน</a>
                 <a href="index.html" class="btn btn-primary">กลับหน้าหลัก</a>
             </div>
         </div>

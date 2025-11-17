@@ -1,40 +1,46 @@
 <?php
-$file = 'feedback_db.txt';
+$file = 'feedback.json';
+
+$all_data = []; 
+if (file_exists($file)) {
+    $json_data = file_get_contents($file);
+    $all_data = json_decode($json_data, true); 
+    if (!is_array($all_data)) {
+        $all_data = [];
+    }
+}
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
-    $visitor = htmlspecialchars($_POST['visitor']);
-    $rating = htmlspecialchars($_POST['rating']);
-    $comment = htmlspecialchars($_POST['comment']);
-
     $new_entry = [
-        'visitor' => $visitor,
-        'rating' => $rating,
-        'comment' => $comment
+        'visitor' => htmlspecialchars($_POST['visitor']),
+        'rating'  => htmlspecialchars($_POST['rating']),
+        'comment' => htmlspecialchars($_POST['comment'])
     ];
 
-    $data_line = json_encode($new_entry) . "\n";
-    file_put_contents($file, $data_line, FILE_APPEND | LOCK_EX);
+    array_unshift($all_data, $new_entry);
+
+    $new_json_data = json_encode($all_data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+
+    file_put_contents($file, $new_json_data, LOCK_EX);
 }
 
 $all_entries_html = "";
-if (file_exists($file)) {
-    $lines = file($file, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-    $lines = array_reverse($lines);
-
-    foreach ($lines as $line) {
-        $entry = json_decode($line, true);
-        $stars = str_repeat("⭐", $entry['rating']);
+if (empty($all_data)) {
+    $all_entries_html = "<p class='text-center'>ยังไม่มี Feedback</p>";
+} else {
+    foreach ($all_data as $entry) {
+        $stars = str_repeat("⭐", $entry['rating']); 
+        
         $all_entries_html .= "<div class='list-group-item'>";
         $all_entries_html .= "<strong>" . $entry['visitor'] . "</strong> (ให้คะแนน: " . $stars . ")<br>";
+        
         if (!empty($entry['comment'])) {
              $all_entries_html .= "<p style='white-space: pre-wrap; margin-top: 5px; margin-bottom: 0;'>" . $entry['comment'] . "</p>";
         }
-    
+       
         $all_entries_html .= "</div>";
     }
-} else {
-    $all_entries_html = "<p class='text-center'>ยังไม่มี Feedback</p>";
 }
 ?>
 
@@ -44,16 +50,15 @@ if (file_exists($file)) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>สรุป Feedback ทั้งหมด</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css?v=11"> <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
     <header>
         <h1><a href="index.html" class="nav-link">HALLOWEEN</a></h1>
     </header>
 
-    <div class="content mx-auto">
-        <div class="p-3 border rounded" style="background: rgba(255,255,255,0.1); backdrop-filter: blur(10px);">
+    <main class="container my-4">
+        <div class="p-3 border rounded" style="background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); max-width: 800px; margin: auto;">
             <h3 style='text-align: center;'>สรุปข้อมูลประเมินความพึงพอใจ (ทั้งหมด)</h3>
             <p style="text-align: center;">(แสดงรายการล่าสุดก่อน)</p>
             <hr style='border-color: #ffb84d;'>
@@ -67,7 +72,7 @@ if (file_exists($file)) {
                 <a href="index.html" class="btn btn-primary">กลับหน้าหลัก</a>
             </div>
         </div>
-    </div>
+    </main>
 
     <footer>
         <p>© 2025 Our Halloween Festival</p>
