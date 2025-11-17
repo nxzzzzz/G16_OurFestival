@@ -49,7 +49,7 @@ if (empty($all_data)) {
 </head>
 <body>
     <header>
-        <h1><a href="index.html" class="nav-link">HALLOWEEN</a></h1>
+        <h1><a href="homepage.html" class="nav-link">HALLOWEEN</a></h1>
     </header>
 
     <main class="container my-4">
@@ -63,8 +63,7 @@ if (empty($all_data)) {
             </div>
 
             <div class="text-center mt-4">
-                <a href="register.html" class="btn btn-secondary">กลับไปลงทะเบียน</a>
-                <a href="index.html" class="btn btn-primary">กลับหน้าหลัก</a>
+                <a href="homepage.html" class="btn btn-primary">กลับหน้าหลัก</a>
             </div>
         </div>
     </main>
