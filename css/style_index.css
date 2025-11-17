@@ -1,0 +1,95 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background: #000;
+    color: #fff;
+    overflow: hidden;
+    cursor: none;
+}
+
+#spooky-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+#wisp {
+    position: fixed; 
+    top: -20px; 
+    left: -20px;
+    width: 15px;
+    height: 15px;
+    background: #FFA500;
+    border-radius: 50%;
+    z-index: 1000;
+    pointer-events: none;
+    box-shadow: 0 0 20px 10px rgba(255, 165, 0, 0.7);
+    transition: transform 0.1s linear; 
+}
+
+.container {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    padding: 20px;
+}
+
+h1 {
+    font-family: 'Creepster', cursive;
+    font-size: 5rem;
+    color: #FFA500;
+    margin-bottom: 30px;
+    text-shadow: 0 0 10px #FFA500, 0 0 20px #FF8C00, 0 0 40px #E65C00;
+    transition: all 0.1s ease-in-out;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translate(0, 0) scale(1.1); }
+    10%, 30%, 50%, 70%, 90% { transform: translate(-3px, -2px) scale(1.1); }
+    20%, 40%, 60%, 80% { transform: translate(3px, 2px) scale(1.1); }
+}
+
+.shake-it {
+    animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
+}
+
+
+.join-button {
+    font-size: 1.25rem;
+    padding: 15px 35px;
+    text-decoration: none;
+    background: #8A2BE2;
+    color: #FFFFFF;
+    font-weight: bold;
+    border-radius: 50px;
+    border: 3px solid #FFA500;
+    box-shadow: 0 0 15px #8A2BE2, 0 0 25px #FFA500 inset;
+    transition: all 0.3s ease;
+}
+
+.join-button:hover {
+    background: #FFA500;
+    color: #4B0082;
+    border-color: #8A2BE2;
+    transform: scale(1.1);
+    box-shadow: 0 0 25px #FFA500, 0 0 40px #FF8C00;
+}
+
+.thankyou-message {
+    font-family: 'Arial', sans-serif;
+    font-size: 1.5rem; /* ขนาดใหญ่กำลังดี */
+    color: #FFA500; /* สีส้มธีมเดียวกับปุ่ม */
+    font-weight: bold;
+    text-shadow: 0 0 5px #FF8C00, 0 0 10px #E65C00;
+    margin-top: 20px;
+}
