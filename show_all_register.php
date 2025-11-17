@@ -14,9 +14,13 @@ if (file_exists($file)) {
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     $new_entry = [
-        'fname' => htmlspecialchars($_POST['first-name']),
-        'lname' => htmlspecialchars($_POST['last-name']),
-        'email' => htmlspecialchars($_POST['email'])
+        'fname'   => htmlspecialchars($_POST['first-name']),
+        'lname'   => htmlspecialchars($_POST['last-name']),
+        'gender'  => htmlspecialchars($_POST['gender']),
+        'status'  => htmlspecialchars($_POST['status']),
+        'age'     => htmlspecialchars($_POST['age']),
+        'tel'     => htmlspecialchars($_POST['telephone']),
+        'email'   => htmlspecialchars($_POST['email'])
     ];
 
     array_unshift($all_data, $new_entry);
