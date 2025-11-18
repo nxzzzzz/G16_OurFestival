@@ -1,3 +1,4 @@
+// --- 1. โค้ดสำหรับ Hamburger Menu ---
 document.addEventListener("DOMContentLoaded", () => {
   console.log("Halloween Festival site loaded!");
 
@@ -11,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-// js/script.js
+// --- 2. โค้ดสำหรับค้างคาว ---
 document.addEventListener('DOMContentLoaded', () => {
   const header = document.querySelector('header');
   if(!header) return;
@@ -21,19 +22,22 @@ document.addEventListener('DOMContentLoaded', () => {
   bats.setAttribute('aria-hidden','true');
   header.appendChild(bats);
 
-  const N = 7;                               // จำนวนค้างคาวที่ต้องการ
-  const src = 'https://em-content.zobj.net/source/animated-noto-color-emoji/356/bat_1f987.gif';    // ลิงก์รูปค้างคาว (GIF/APNG/SVG)
+  const N = 7;
+  const src = 'https://em-content.zobj.net/source/animated-noto-color-emoji/356/bat_1f987.gif';
   for(let i=1;i<=N;i++){
     const img = document.createElement('img');
-    img.className = `bat bat--${i} ${i%2? 'bat--ltr':'bat--rtl'}`; // สลับทิศ
+    img.className = `bat bat--${i} ${i%2? 'bat--ltr':'bat--rtl'}`;
     img.src = src; img.alt = '';
     bats.appendChild(img);
   }
 });
 
-//Register Validation
+// --- 3. โค้ดสำหรับ Register Validation ---
 document.addEventListener("DOMContentLoaded", function() {
   const form = document.getElementById("registerForm");
+  // (เราจะตรวจสอบว่า form มีอยู่จริงหรือไม่ เพื่อไม่ให้ error ในหน้าอื่น)
+  if (!form) return; 
+
   const firstName = document.getElementById("first-name");
   const lastName = document.getElementById("last-name");
   const genderInputs = document.querySelectorAll('input[name="gender"]');
@@ -169,5 +173,51 @@ document.addEventListener("DOMContentLoaded", function() {
     if (isFirst && isLast && isAge && isTel && isEmail && isGender && isStatus) {
       form.submit();
     }
+  });
+});
+
+// --- 4. โค้ดสำหรับ Star Rating ---
+document.addEventListener('DOMContentLoaded', () => {
+  const starWrapper = document.querySelector('.star-rating');
+  if (!starWrapper) return;
+
+  const stars = Array.from(starWrapper.querySelectorAll('.star'));
+  const ratingInput = document.getElementById('rating-value');
+  const setRating = (rating) => {
+    stars.forEach((star, index) => {
+      if (index < rating) {
+        star.textContent = '★';
+        star.classList.add('selected');
+      } else {
+        star.textContent = '☆';
+        star.classList.remove('selected');
+      }
+    });
+  };
+  
+  starWrapper.addEventListener('click', (e) => {
+    const clickedStar = e.target.closest('.star');
+    if (!clickedStar) return;
+
+    const newRating = clickedStar.dataset.value; 
+    const currentRating = ratingInput.value; 
+
+    if (newRating === currentRating) {
+      ratingInput.value = '0';
+      setRating(0);
+    } else {
+      ratingInput.value = newRating;
+      setRating(newRating);
+    }
+  });
+
+  starWrapper.addEventListener('mouseover', (e) => {
+    const hoverStar = e.target.closest('.star');
+    if (!hoverStar) return;
+    setRating(hoverStar.dataset.value);
+  });
+
+  starWrapper.addEventListener('mouseout', () => {
+    setRating(ratingInput.value);
   });
 });

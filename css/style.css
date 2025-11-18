@@ -505,6 +505,43 @@ footer p {
 }
 
 /* =======================
+   STAR RATING (ฉบับแก้ไข Google Maps)
+======================= */
+
+.star-rating {
+  font-size: 3rem;
+  color: #ccc;
+  cursor: pointer;
+}
+
+.star-rating .star {
+  display: inline-block;
+  transition: color 0.2s ease, transform 0.1s ease;
+  
+  margin-right: 10px; 
+}
+
+.star-rating .star:hover {
+  transform: scale(1.1);
+}
+
+.star-rating .star.selected,
+.star-rating:hover .star:hover {
+  color: #fbbc05; 
+}
+
+/* (โค้ดนี้คือตรรกะการ hover ที่ JS ควบคุม) */
+.star-rating:hover .star:hover ~ .star {
+  color: #ccc; /* สีดาว (ว่าง) */
+}
+.star-rating:hover .star {
+  color: #fbbc05; /* สีดาว (hover) */
+}
+.star-rating .star.selected {
+  color: #fbbc05; /* สีดาว (ที่เลือกไว้) */
+}
+
+/* =======================
    RESPONSIVE DESIGN (แก้ไขทั้งหมด)
 ======================= */
 

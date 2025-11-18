@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>แบบประเมินความพึงพอใจ | Halloween Festival</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?v=13">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
 </head>
@@ -38,7 +38,7 @@
       </li>
 
       <li class="nav-item">
-        <a href="show_all_register.php" class="nav-link"><i class="bi bi-person-plus"></i> registrations</a>
+        <a href="show_all_register.php" class="nav-link"><i class="bi bi-person-plus"></i> Registrations</a>
       </li>
 
       <li class="nav-item">
@@ -46,7 +46,7 @@
       </li>
 
       <li class="nav-item">
-        <a href="leave.html" class="nav-link"></i> Leave Festival 👻</a>
+        <a href="leave.html" class="nav-link"><i class="bi bi-box-arrow-right"></i> Exit</a>
       </li>
     </ul>
   </nav>
@@ -56,13 +56,28 @@
     <form id="feedbackForm" class="p-3 border rounded bg-white" action="show_all_feedback.php" method="POST" style="width: 1140px;">
         
         <div class="mb-3">
-          <label for="visitor" class="form-label">Name</label>
-          <input type="text" id="visitor" name="visitor" class="form-control" required>
+          <label for="fname" class="form-label">First Name</label>
+          <input type="text" id="fname" name="fname" class="form-control" required>
+        </div>
+        <div class="mb-3">
+          <label for="lname" class="form-label">Last Name</label>
+          <input type="text" id="lname" name="lname" class="form-control" required>
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" id="email" name="email" class="form-control" required>
         </div>
         
         <div class="mb-3">
-          <label for="rating" class="form-label">Rate (1–5)</label>
-          <input type="range" id="rating" name="rating" class="form-range" min="1" max="5">
+          <label class="form-label">Rate (1–5)</label>
+          <div class="star-rating">
+            <span class="star" data-value="1">☆</span>
+            <span class="star" data-value="2">☆</span>
+            <span class="star" data-value="3">☆</span>
+            <span class="star" data-value="4">☆</span>
+            <span class="star" data-value="5">☆</span>
+          </div>
+          <input type="hidden" name="rating" id="rating-value" value="0" required>
         </div>
         
         <div class="mb-3">
@@ -79,7 +94,7 @@
     <p>© 2025 Our Halloween Festival</p>
   </footer>
 
-  <script src="js/script.js"></script>
+  <script src="js/script.js?v=2"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
