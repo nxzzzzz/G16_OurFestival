@@ -57,7 +57,7 @@ if (empty($all_data)) {
     </header>
 
     <main class="container my-4">
-        <div class="p-3 border rounded" style="background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); max-width: 800px; margin: auto;">
+        <div class="p-3 border rounded text-white opacity-75" style="background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); max-width: 800px; margin: auto;">
             <h3 style='text-align: center;'>สรุปข้อมูลผู้ลงทะเบียน (ทั้งหมด)</h3>
             <p style="text-align: center;">(แสดงรายการล่าสุดก่อน)</p>
             <hr style='border-color: #ffb84d;'>
