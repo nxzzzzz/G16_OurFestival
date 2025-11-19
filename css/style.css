@@ -172,6 +172,7 @@ header a:hover {
   display: flex;
   align-items: stretch;
 }
+
 .row.equal-height .card {
   display: flex;
   flex-direction: column;
@@ -179,30 +180,30 @@ header a:hover {
   flex: 1 1 auto;
 }
 
+.row.g-3 {
+  perspective: 1000px; 
+}
+
+.row.equal-height > [class*="col-"] {
+    transform-style: preserve-3d;
+}
+
 .card {
-  background: linear-gradient(
-      180deg,
-      rgba(20, 8, 4, 0.72) 0%,
-      rgba(10, 5, 3, 0.80) 50%,
-      rgba(0, 0, 0, 0.88) 100%
-  );
-  border: 1px solid rgba(255, 120, 0, 0.18);
-  border-radius: 18px;
-  backdrop-filter: blur(10px);
-  overflow: hidden;
-  transition: .35s ease;
+  border: 2px solid rgba(255, 120, 0, 0.3);
   box-shadow:
-    0 4px 18px rgba(0,0,0,0.55),
-    0 0 14px rgba(255,100,0,.20),
-    inset 0 0 25px rgba(255,120,0,0.10);
+    0 4px 18px rgba(0,0,0,0.6),
+    0 0 18px rgba(255,100,0,.30),
+    inset 0 0 30px rgba(255,120,0,0.15);
+  transform-style: preserve-3d;
+  transition: all 0.2s ease-out;
 }
 
 .card:hover {
-  transform: translateY(-8px) scale(1.02);
+  transform: translateY(-5px); 
   box-shadow:
-    0 6px 22px rgba(0,0,0,0.55),
-    0 0 20px rgba(255,150,0,0.45),
-    0 0 50px rgba(255,90,0,0.25);
+    0 8px 25px rgba(0,0,0,0.7),
+    0 0 25px rgba(255,150,0,0.6),
+    0 0 60px rgba(255,90,0,0.3);
 }
 
 .row.equal-height .card .card-img-top,
@@ -490,22 +491,28 @@ footer p {
 }
 
 /* =======================
-   TOGGLE BUTTON (แก้ไข)
+   TOGGLE BUTTON
 ======================= */
 #toggleSidebar {
   z-index: 1200;
-  color: #311b92;
-  background-color: #fff;
-  border: none;
+  color: var(--color-accent-orange);
+  background-color: rgba(0, 0, 0, 0.7);
+  border: 1px solid var(--color-primary-light);
   font-size: 1.5rem;
   border-radius: 8px;
   padding: 4px 10px;
-  box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 10px rgba(255, 145, 0, 0.6);
+  transition: all 0.3s ease;
   display: block; 
+}
+#toggleSidebar:hover {
+  background-color: rgba(0, 0, 0, 0.9);
+  color: #fff;
+  box-shadow: 0 0 15px var(--color-primary-light);
 }
 
 /* =======================
-   STAR RATING (ฉบับแก้ไข Google Maps)
+   STAR RATING 
 ======================= */
 
 .star-rating {
@@ -530,19 +537,18 @@ footer p {
   color: #fbbc05; 
 }
 
-/* (โค้ดนี้คือตรรกะการ hover ที่ JS ควบคุม) */
 .star-rating:hover .star:hover ~ .star {
-  color: #ccc; /* สีดาว (ว่าง) */
+  color: #ccc;
 }
 .star-rating:hover .star {
-  color: #fbbc05; /* สีดาว (hover) */
+  color: #fbbc05; 
 }
 .star-rating .star.selected {
-  color: #fbbc05; /* สีดาว (ที่เลือกไว้) */
+  color: #fbbc05;
 }
 
 /* =======================
-   RESPONSIVE DESIGN (แก้ไขทั้งหมด)
+   RESPONSIVE DESIGN
 ======================= */
 
 /* --- 1. MOBILE & TABLET (จอเล็กกว่า 1024px) --- */

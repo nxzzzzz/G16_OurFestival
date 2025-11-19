@@ -221,3 +221,57 @@ document.addEventListener('DOMContentLoaded', () => {
     setRating(ratingInput.value);
   });
 });
+
+// ... [Existing code for Hamburger Menu, Bats, and Form Validation] ...
+
+// --- 5. โค้ดสำหรับ Card Hover Tilt Effect (ความสวยงาม) ---
+document.addEventListener('DOMContentLoaded', () => {
+    // เลือกการ์ดทั้งหมดที่ต้องการให้มีเอฟเฟกต์ (ในที่นี้คือ .card ทั้งหมด)
+    const cards = document.querySelectorAll('.card');
+    
+    cards.forEach(card => {
+        let rect = card.getBoundingClientRect(); 
+        
+        // Handler เมื่อเมาส์เคลื่อนที่
+        const handleTilt = (e) => {
+            // อัพเดทตำแหน่งของ Card เพื่อรองรับการเลื่อนหน้าจอ
+            rect = card.getBoundingClientRect();
+            
+            // 1. หาตำแหน่งของเมาส์สัมพัทธ์กับจุดศูนย์กลางของการ์ด
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+            const mouseX = e.clientX;
+            const mouseY = e.clientY;
+
+            // 2. แปลงค่าตำแหน่งเป็นช่วง -1 ถึง 1 (จากศูนย์กลาง)
+            const x = (mouseX - centerX) / (rect.width / 2);
+            const y = (mouseY - centerY) / (rect.height / 2);
+
+            // 3. คำนวณองศาการหมุน (สูงสุด 5 องศา)
+            const tiltMax = 5;
+            const rotateY = x * tiltMax;      // เอียงซ้าย/ขวา (แกน Y)
+            const rotateX = y * tiltMax * -1; // เอียงขึ้น/ลง (แกน X, ต้องกลับทิศทาง)
+
+            // 4. ใช้ CSS transform เพื่อเอียงการ์ด
+            card.style.transform = `
+                perspective(1000px)
+                scale(1.01) 
+                rotateX(${rotateX}deg)
+                rotateY(${rotateY}deg)
+            `;
+        };
+
+        // Handler เมื่อเมาส์ออกจากการ์ด (คืนค่าปกติ)
+        const handleReset = () => {
+            card.style.transform = `
+                perspective(1000px)
+                scale(1)
+                rotateX(0deg)
+                rotateY(0deg)
+            `;
+        };
+
+        card.addEventListener('mousemove', handleTilt);
+        card.addEventListener('mouseleave', handleReset);
+    });
+});
