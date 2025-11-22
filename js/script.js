@@ -275,3 +275,92 @@ document.addEventListener('DOMContentLoaded', () => {
         card.addEventListener('mouseleave', handleReset);
     });
 });
+
+//// --- 6. โค้ดสำหรับ Feedback Validation) ---
+document.addEventListener("DOMContentLoaded", function() {
+  const form = document.getElementById("feedbackForm");
+  // (เราจะตรวจสอบว่า form มีอยู่จริงหรือไม่ เพื่อไม่ให้ error ในหน้าอื่น)
+  if (!form) return; 
+
+  const firstName = document.getElementById("fname");
+  const lastName = document.getElementById("lname");
+  const email = document.getElementById("email");
+  const rate = document.getElementById("rating-value");
+  // Show Error
+  function showError(input, message) {
+    input.classList.add("is-invalid");
+    input.classList.remove("is-valid");
+    let small = input.nextElementSibling;
+    if (!small || small.tagName !== "SMALL") {
+      small = input.parentElement.querySelector("small");
+  }
+    if (small && small.tagName === "SMALL") {
+      small.className = "text-danger";
+      small.textContent = message;
+    }
+  }
+  // Show Success
+  function showSuccess(input) {
+    input.classList.add("is-valid");
+    input.classList.remove("is-invalid");
+    const small = input.nextElementSibling;
+    if (small && small.tagName === "SMALL") small.textContent = "";
+  }
+  // Validate Firstname
+  function validateName(input) {
+    const pattern = /^[A-Za-zก-๙]+$/;
+    if (input.value.trim() === "") {
+      showError(input,`First name is required`);
+      return false;
+    } else if (!pattern.test(input.value.trim())) {
+      showError(input, "Only letters are allowed");
+      return false;
+    } else {
+      showSuccess(input);
+      return true;
+    }
+  }
+   // Validate Lastname
+    function validateLname(input) {
+    const pattern = /^[A-Za-zก-๙]+$/;
+    if (input.value.trim() === "") {
+      showError(input, `Last name is required`);
+      return false;
+    } else if (!pattern.test(input.value.trim())) {
+      showError(input, "Only letters are allowed");
+      return false;
+    } else {
+      showSuccess(input);
+      return true;
+    }
+  }
+  // Validate Email
+  function validateEmail(input) {
+    const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (input.value.trim() === "") {
+      showError(input, "Email is required");
+      return false;
+    } else if (!pattern.test(input.value.trim())) {
+      showError(input, "Invalid email");
+      return false;
+    } else {
+      showSuccess(input);
+      return true;
+    }
+  }
+
+  // Real-time validation
+  firstName.addEventListener("input", () => validateName(firstName));
+  lastName.addEventListener("input", () => validateLname(lastName));
+  email.addEventListener("input", () => validateEmail(email));
+  // Submit form
+  form.addEventListener("submit", function(e) {
+    e.preventDefault();
+    const isFirst = validateName(firstName);
+    const isLast = validateLname(lastName);
+    const isEmail = validateEmail(email);
+    if (isFirst && isLast && isEmail) {
+      form.submit();
+    }
+  });
+});
