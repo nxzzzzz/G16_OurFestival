@@ -53,23 +53,27 @@
 
   <div class="content">
     <h2>Feedback</h2>
-    <form id="feedbackForm" class="p-3 border rounded bg-white" action="show_all_feedback.php" method="POST" style="width: 1140px;">
-        
-        <div class="mb-3">
+    <form id="feedbackForm" class="p-4 border rounded bg-white" action="show_all_feedback.php" method="POST"
+      style="width: 100%; max-width: 900px; margin: 0 auto;">
+
+      <div class="row">
+        <div class="col-md-6 mb-3">
           <label for="fname" class="form-label">First Name</label>
           <input type="text" id="fname" name="fname" class="form-control" required>
         </div>
-        <div class="mb-3">
+        <div class="col-md-6 mb-3">
           <label for="lname" class="form-label">Last Name</label>
           <input type="text" id="lname" name="lname" class="form-control" required>
         </div>
-        <div class="mb-3">
+      </div>
+
+      <div class="row align-items-center">
+        <div class="col-md-6 mb-3">
           <label for="email" class="form-label">Email</label>
           <input type="email" id="email" name="email" class="form-control" required>
         </div>
-        
-        <div class="mb-3">
-          <label class="form-label">Rate (1–5)</label>
+        <div class="col-md-6 mb-3 text-center text-md-start">
+          <label class="form-label d-block">Rate (1–5)</label>
           <div class="star-rating">
             <span class="star" data-value="1">☆</span>
             <span class="star" data-value="2">☆</span>
@@ -79,15 +83,18 @@
           </div>
           <input type="hidden" name="rating" id="rating-value" value="0" required>
         </div>
-        
-        <div class="mb-3">
-          <label for="comment" class="form-label">Message</label>
-          <textarea id="comment" name="comment" class="form-control" rows="3"></textarea>
-        </div><br>
-        
-        <button type="submit" class="btn btn-primary">Share my feedback</button>
-        <a href="show_all_feedback.php" class="btn btn-secondary ms-2">View all feedback</a>
-      </form>
+      </div>
+
+      <div class="mb-3">
+        <label for="comment" class="form-label">Message</label>
+        <textarea id="comment" name="comment" class="form-control" rows="4"></textarea>
+      </div>
+
+      <div class="text-center mt-4">
+        <button type="submit" class="btn btn-primary px-4">Share my feedback</button>
+        <a href="show_all_feedback.php" class="btn btn-secondary px-4 ms-2">View all</a>
+      </div>
+    </form>
   </div>
 
   <footer>

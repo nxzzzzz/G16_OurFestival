@@ -516,7 +516,7 @@ footer p {
 ======================= */
 
 .star-rating {
-  font-size: 3rem;
+  font-size: 2rem;
   color: #ccc;
   cursor: pointer;
 }
@@ -563,8 +563,9 @@ footer p {
     border-radius: 10px;
   }
   .content {
+    width: 100%;
     margin: 0 auto;
-    max-width: 1140px;
+    max-width: 1024px;
     padding-left: 0;
     
   }
@@ -577,7 +578,8 @@ footer p {
   .sidebar { transform: translateX(0); }
 
   .content {
-    max-width: 1140px;
+    width: 100%;
+    max-width: 1440px;
     margin: 0 auto;
     padding-left: auto;
   }
