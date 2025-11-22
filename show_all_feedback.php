@@ -1,19 +1,21 @@
 <?php
 $file = 'feedback.json';
 
-$all_data = []; 
+$all_data = [];
 if (file_exists($file)) {
     $json_data = file_get_contents($file);
-    $all_data = json_decode($json_data, true); 
+    $all_data = json_decode($json_data, true);
     if (!is_array($all_data)) {
         $all_data = [];
     }
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    
+
     $new_entry = [
-        'visitor' => htmlspecialchars($_POST['visitor']),
+        'fname'   => htmlspecialchars($_POST['fname']),
+        'lname'   => htmlspecialchars($_POST['lname']),
+        'email'   => htmlspecialchars($_POST['email']),
         'rating'  => htmlspecialchars($_POST['rating']),
         'comment' => htmlspecialchars($_POST['comment'])
     ];
@@ -30,15 +32,16 @@ if (empty($all_data)) {
     $all_entries_html = "<p class='text-center'>ยังไม่มี Feedback</p>";
 } else {
     foreach ($all_data as $entry) {
-        $stars = str_repeat("⭐", $entry['rating']); 
-        
+        $stars = str_repeat("⭐", $entry['rating']);
+
         $all_entries_html .= "<div class='list-group-item'>";
-        $all_entries_html .= "<strong>" . $entry['visitor'] . "</strong> (ให้คะแนน: " . $stars . ")<br>";
-        
+        $all_entries_html .= "<strong>" . $entry['fname'] . " " . $entry['lname'] . "</strong> (ให้คะแนน: " . $stars . ")<br>";
+        $all_entries_html .= "<small>" . $entry['email'] . "</small><br>";
+
         if (!empty($entry['comment'])) {
-             $all_entries_html .= "<p style='white-space: pre-wrap; margin-top: 5px; margin-bottom: 0;'>" . $entry['comment'] . "</p>";
+            $all_entries_html .= "<p style='text-align: left; white-space: pre-wrap; margin-top: 5px; margin-bottom: 0;'>" . $entry['comment'] . "</p>";
         }
-       
+
         $all_entries_html .= "</div>";
     }
 }
@@ -46,12 +49,15 @@ if (empty($all_data)) {
 
 <!DOCTYPE html>
 <html lang="th">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>สรุป Feedback ทั้งหมด</title>
-    <link rel="stylesheet" href="css/style.css?v=11"> <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css?v=11">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
+
 <body>
     <header>
         <h1><a href="homepage.html" class="nav-link">HALLOWEEN</a></h1>
@@ -62,9 +68,10 @@ if (empty($all_data)) {
             <h3 style='text-align: center;'>สรุปข้อมูลประเมินความพึงพอใจ (ทั้งหมด)</h3>
             <p style="text-align: center;">(แสดงรายการล่าสุดก่อน)</p>
             <hr style='border-color: #ffb84d;'>
-            
+
             <div class="list-group" style="max-height: 500px; overflow-y: auto;">
-                <?php echo $all_entries_html; // พิมพ์รายการ Feedback ทั้งหมด ?>
+                <?php echo $all_entries_html; // พิมพ์รายการ Feedback ทั้งหมด 
+                ?>
             </div>
 
             <div class="text-center mt-4">
@@ -77,5 +84,9 @@ if (empty($all_data)) {
     <footer>
         <p>© 2025 Our Halloween Festival</p>
     </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
 </body>
+
 </html>
