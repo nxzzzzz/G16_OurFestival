@@ -88,14 +88,23 @@ document.addEventListener("DOMContentLoaded", function() {
   // Validate Gender
   function validateGender() {
     const checked = Array.from(genderInputs).some(r => r.checked);
-    const parent = genderInputs[0].parentElement;
-    const small = parent.querySelector("small");
-    const input=genderInputs[0];
+    const container = genderInputs[0].closest(".col-md-6");
+    const small = container.querySelector("small");
       if (!checked) {
-        showError(input,"Please Select Gender");
+        small.textContent ="Please Select Gender";
+        small.className = "text-danger";
+        genderInputs.forEach(r => {
+          r.classList.add("is-invalid");
+          r.classList.remove("is-valid");
+        });
         return false;
+
       } else {
-        showSuccess(input);
+        small.textContent = "";
+        genderInputs.forEach(r => {
+          r.classList.remove("is-invalid");
+          r.classList.add("is-valid");
+        });
         return true;
       }
     return checked;
